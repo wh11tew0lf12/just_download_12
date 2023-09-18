@@ -27,7 +27,7 @@ for line in open("/root/webhooks.txt","r+").readlines():
         webhooks.append(line)
 open("/root/webhooks.txt","r+").close()
 
-max_trade = 8
+max_trade = 5
 curr_num = 0
 profit = 0.0
 trade_number = 0
@@ -1182,7 +1182,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_COTIUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("COTIUSDT end of short trade" in dt) and (status_trade_COTIUSDT == -1) and curr_num > 0:
+            if ("COTIUSDT end of short trade" in dt) and (status_trade_COTIUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_COTIUSDT:
@@ -1191,7 +1191,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "COTIUSDT LONG" in dt and status_trade_COTIUSDT == -1 and curr_num <= max_trade:
+            if "COTIUSDT LONG" in dt and (status_trade_COTIUSDT == -1 or status_trade_COTIUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_COTIUSDT:
@@ -1199,7 +1199,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_COTIUSDT = 0
                     curr_num = curr_num - 1
 
-            if "COTIUSDT SHORT" in dt and status_trade_COTIUSDT == 1 and curr_num <= max_trade:
+            if "COTIUSDT SHORT" in dt and (status_trade_COTIUSDT == -1 or status_trade_COTIUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_COTIUSDT:
@@ -1234,7 +1234,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_LINKUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("LINKUSDT end of short trade" in dt) and (status_trade_LINKUSDT == -1) and curr_num > 0:
+            if ("LINKUSDT end of short trade" in dt) and (status_trade_LINKUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LINKUSDT:
@@ -1243,7 +1243,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "LINKUSDT LONG" in dt and status_trade_LINKUSDT == -1 and curr_num <= max_trade:
+            if "LINKUSDT LONG" in dt and (status_trade_LINKUSDT == -1 or status_trade_LINKUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LINKUSDT:
@@ -1251,7 +1251,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_LINKUSDT = 0
                     curr_num = curr_num - 1
 
-            if "LINKUSDT SHORT" in dt and status_trade_LINKUSDT == 1 and curr_num <= max_trade:
+            if "LINKUSDT SHORT" in dt and (status_trade_LINKUSDT == -1 or status_trade_LINKUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LINKUSDT:
@@ -1286,7 +1286,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_QTUMUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("QTUMUSDT end of short trade" in dt) and (status_trade_QTUMUSDT == -1) and curr_num > 0:
+            if ("QTUMUSDT end of short trade" in dt) and (status_trade_QTUMUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_QTUMUSDT:
@@ -1295,7 +1295,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "QTUMUSDT LONG" in dt and status_trade_QTUMUSDT == -1 and curr_num <= max_trade:
+            if "QTUMUSDT LONG" in dt and (status_trade_QTUMUSDT == -1 or status_trade_QTUMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_QTUMUSDT:
@@ -1303,7 +1303,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_QTUMUSDT = 0
                     curr_num = curr_num - 1
 
-            if "QTUMUSDT SHORT" in dt and status_trade_QTUMUSDT == 1 and curr_num <= max_trade:
+            if "QTUMUSDT SHORT" in dt and (status_trade_QTUMUSDT == -1 or status_trade_QTUMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_QTUMUSDT:
@@ -1338,7 +1338,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_XLMUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("XLMUSDT end of short trade" in dt) and (status_trade_XLMUSDT == -1) and curr_num > 0:
+            if ("XLMUSDT end of short trade" in dt) and (status_trade_XLMUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XLMUSDT:
@@ -1347,7 +1347,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "XLMUSDT LONG" in dt and status_trade_XLMUSDT == -1 and curr_num <= max_trade:
+            if "XLMUSDT LONG" in dt and (status_trade_XLMUSDT == -1 or status_trade_XLMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XLMUSDT:
@@ -1355,7 +1355,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_XLMUSDT = 0
                     curr_num = curr_num - 1
 
-            if "XLMUSDT SHORT" in dt and status_trade_XLMUSDT == 1 and curr_num <= max_trade:
+            if "XLMUSDT SHORT" in dt and (status_trade_XLMUSDT == -1 or status_trade_XLMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XLMUSDT:
@@ -1390,7 +1390,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_LTCUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("LTCUSDT end of short trade" in dt) and (status_trade_LTCUSDT == -1) and curr_num > 0:
+            if ("LTCUSDT end of short trade" in dt) and (status_trade_LTCUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LTCUSDT:
@@ -1399,7 +1399,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "LTCUSDT LONG" in dt and status_trade_LTCUSDT == -1 and curr_num <= max_trade:
+            if "LTCUSDT LONG" in dt and (status_trade_LTCUSDT == -1 or status_trade_LTCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LTCUSDT:
@@ -1407,7 +1407,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_LTCUSDT = 0
                     curr_num = curr_num - 1
 
-            if "LTCUSDT SHORT" in dt and status_trade_LTCUSDT == 1 and curr_num <= max_trade:
+            if "LTCUSDT SHORT" in dt and (status_trade_LTCUSDT == -1 or status_trade_LTCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LTCUSDT:
@@ -1442,7 +1442,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_LRCUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("LRCUSDT end of short trade" in dt) and (status_trade_LRCUSDT == -1) and curr_num > 0:
+            if ("LRCUSDT end of short trade" in dt) and (status_trade_LRCUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LRCUSDT:
@@ -1451,7 +1451,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "LRCUSDT LONG" in dt and status_trade_LRCUSDT == -1 and curr_num <= max_trade:
+            if "LRCUSDT LONG" in dt and (status_trade_LRCUSDT == -1 or status_trade_LRCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LRCUSDT:
@@ -1459,7 +1459,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_LRCUSDT = 0
                     curr_num = curr_num - 1
 
-            if "LRCUSDT SHORT" in dt and status_trade_LRCUSDT == 1 and curr_num <= max_trade:
+            if "LRCUSDT SHORT" in dt and (status_trade_LRCUSDT == -1 or status_trade_LRCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LRCUSDT:
@@ -1494,7 +1494,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_MATICUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("MATICUSDT end of short trade" in dt) and (status_trade_MATICUSDT == -1) and curr_num > 0:
+            if ("MATICUSDT end of short trade" in dt) and (status_trade_MATICUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MATICUSDT:
@@ -1503,7 +1503,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "MATICUSDT LONG" in dt and status_trade_MATICUSDT == -1 and curr_num <= max_trade:
+            if "MATICUSDT LONG" in dt and (status_trade_MATICUSDT == -1 or status_trade_MATICUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MATICUSDT:
@@ -1511,7 +1511,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_MATICUSDT = 0
                     curr_num = curr_num - 1
 
-            if "MATICUSDT SHORT" in dt and status_trade_MATICUSDT == 1 and curr_num <= max_trade:
+            if "MATICUSDT SHORT" in dt and (status_trade_MATICUSDT == -1 or status_trade_MATICUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MATICUSDT:
@@ -1546,7 +1546,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_XTZUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("XTZUSDT end of short trade" in dt) and (status_trade_XTZUSDT == -1) and curr_num > 0:
+            if ("XTZUSDT end of short trade" in dt) and (status_trade_XTZUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XTZUSDT:
@@ -1555,7 +1555,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "XTZUSDT LONG" in dt and status_trade_XTZUSDT == -1 and curr_num <= max_trade:
+            if "XTZUSDT LONG" in dt and (status_trade_XTZUSDT == -1 or status_trade_XTZUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XTZUSDT:
@@ -1563,7 +1563,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_XTZUSDT = 0
                     curr_num = curr_num - 1
 
-            if "XTZUSDT SHORT" in dt and status_trade_XTZUSDT == 1 and curr_num <= max_trade:
+            if "XTZUSDT SHORT" in dt and (status_trade_XTZUSDT == -1 or status_trade_XTZUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XTZUSDT:
@@ -1598,7 +1598,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DYDXUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("DYDXUSDT end of short trade" in dt) and (status_trade_DYDXUSDT == -1) and curr_num > 0:
+            if ("DYDXUSDT end of short trade" in dt) and (status_trade_DYDXUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DYDXUSDT:
@@ -1607,7 +1607,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "DYDXUSDT LONG" in dt and status_trade_DYDXUSDT == -1 and curr_num <= max_trade:
+            if "DYDXUSDT LONG" in dt and (status_trade_DYDXUSDT == -1 or status_trade_DYDXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DYDXUSDT:
@@ -1615,7 +1615,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DYDXUSDT = 0
                     curr_num = curr_num - 1
 
-            if "DYDXUSDT SHORT" in dt and status_trade_DYDXUSDT == 1 and curr_num <= max_trade:
+            if "DYDXUSDT SHORT" in dt and (status_trade_DYDXUSDT == -1 or status_trade_DYDXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DYDXUSDT:
@@ -1650,7 +1650,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SOLUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("SOLUSDT end of short trade" in dt) and (status_trade_SOLUSDT == -1) and curr_num > 0:
+            if ("SOLUSDT end of short trade" in dt) and (status_trade_SOLUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SOLUSDT:
@@ -1659,7 +1659,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "SOLUSDT LONG" in dt and status_trade_SOLUSDT == -1 and curr_num <= max_trade:
+            if "SOLUSDT LONG" in dt and (status_trade_SOLUSDT == -1 or status_trade_SOLUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SOLUSDT:
@@ -1667,7 +1667,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SOLUSDT = 0
                     curr_num = curr_num - 1
 
-            if "SOLUSDT SHORT" in dt and status_trade_SOLUSDT == 1 and curr_num <= max_trade:
+            if "SOLUSDT SHORT" in dt and (status_trade_SOLUSDT == -1 or status_trade_SOLUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SOLUSDT:
@@ -1702,7 +1702,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DOTUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("DOTUSDT end of short trade" in dt) and (status_trade_DOTUSDT == -1) and curr_num > 0:
+            if ("DOTUSDT end of short trade" in dt) and (status_trade_DOTUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DOTUSDT:
@@ -1711,7 +1711,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "DOTUSDT LONG" in dt and status_trade_DOTUSDT == -1 and curr_num <= max_trade:
+            if "DOTUSDT LONG" in dt and (status_trade_DOTUSDT == -1 or status_trade_DOTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DOTUSDT:
@@ -1719,7 +1719,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DOTUSDT = 0
                     curr_num = curr_num - 1
 
-            if "DOTUSDT SHORT" in dt and status_trade_DOTUSDT == 1 and curr_num <= max_trade:
+            if "DOTUSDT SHORT" in dt and (status_trade_DOTUSDT == -1 or status_trade_DOTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DOTUSDT:
@@ -1754,7 +1754,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ADAUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ADAUSDT end of short trade" in dt) and (status_trade_ADAUSDT == -1) and curr_num > 0:
+            if ("ADAUSDT end of short trade" in dt) and (status_trade_ADAUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ADAUSDT:
@@ -1763,7 +1763,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ADAUSDT LONG" in dt and status_trade_ADAUSDT == -1 and curr_num <= max_trade:
+            if "ADAUSDT LONG" in dt and (status_trade_ADAUSDT == -1 or status_trade_ADAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ADAUSDT:
@@ -1771,7 +1771,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ADAUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ADAUSDT SHORT" in dt and status_trade_ADAUSDT == 1 and curr_num <= max_trade:
+            if "ADAUSDT SHORT" in dt and (status_trade_ADAUSDT == -1 or status_trade_ADAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ADAUSDT:
@@ -1806,7 +1806,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_XRPUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("XRPUSDT end of short trade" in dt) and (status_trade_XRPUSDT == -1) and curr_num > 0:
+            if ("XRPUSDT end of short trade" in dt) and (status_trade_XRPUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XRPUSDT:
@@ -1815,7 +1815,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "XRPUSDT LONG" in dt and status_trade_XRPUSDT == -1 and curr_num <= max_trade:
+            if "XRPUSDT LONG" in dt and (status_trade_XRPUSDT == -1 or status_trade_XRPUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XRPUSDT:
@@ -1823,7 +1823,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_XRPUSDT = 0
                     curr_num = curr_num - 1
 
-            if "XRPUSDT SHORT" in dt and status_trade_XRPUSDT == 1 and curr_num <= max_trade:
+            if "XRPUSDT SHORT" in dt and (status_trade_XRPUSDT == -1 or status_trade_XRPUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XRPUSDT:
@@ -1858,7 +1858,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_FILUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("FILUSDT end of short trade" in dt) and (status_trade_FILUSDT == -1) and curr_num > 0:
+            if ("FILUSDT end of short trade" in dt) and (status_trade_FILUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FILUSDT:
@@ -1867,7 +1867,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "FILUSDT LONG" in dt and status_trade_FILUSDT == -1 and curr_num <= max_trade:
+            if "FILUSDT LONG" in dt and (status_trade_FILUSDT == -1 or status_trade_FILUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FILUSDT:
@@ -1875,7 +1875,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_FILUSDT = 0
                     curr_num = curr_num - 1
 
-            if "FILUSDT SHORT" in dt and status_trade_FILUSDT == 1 and curr_num <= max_trade:
+            if "FILUSDT SHORT" in dt and (status_trade_FILUSDT == -1 or status_trade_FILUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FILUSDT:
@@ -1910,7 +1910,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_FTMUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("FTMUSDT end of short trade" in dt) and (status_trade_FTMUSDT == -1) and curr_num > 0:
+            if ("FTMUSDT end of short trade" in dt) and (status_trade_FTMUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FTMUSDT:
@@ -1919,7 +1919,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "FTMUSDT LONG" in dt and status_trade_FTMUSDT == -1 and curr_num <= max_trade:
+            if "FTMUSDT LONG" in dt and (status_trade_FTMUSDT == -1 or status_trade_FTMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FTMUSDT:
@@ -1927,7 +1927,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_FTMUSDT = 0
                     curr_num = curr_num - 1
 
-            if "FTMUSDT SHORT" in dt and status_trade_FTMUSDT == 1 and curr_num <= max_trade:
+            if "FTMUSDT SHORT" in dt and (status_trade_FTMUSDT == -1 or status_trade_FTMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FTMUSDT:
@@ -1962,7 +1962,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_TRXUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("TRXUSDT end of short trade" in dt) and (status_trade_TRXUSDT == -1) and curr_num > 0:
+            if ("TRXUSDT end of short trade" in dt) and (status_trade_TRXUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_TRXUSDT:
@@ -1971,7 +1971,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "TRXUSDT LONG" in dt and status_trade_TRXUSDT == -1 and curr_num <= max_trade:
+            if "TRXUSDT LONG" in dt and (status_trade_TRXUSDT == -1 or status_trade_TRXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_TRXUSDT:
@@ -1979,7 +1979,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_TRXUSDT = 0
                     curr_num = curr_num - 1
 
-            if "TRXUSDT SHORT" in dt and status_trade_TRXUSDT == 1 and curr_num <= max_trade:
+            if "TRXUSDT SHORT" in dt and (status_trade_TRXUSDT == -1 or status_trade_TRXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_TRXUSDT:
@@ -2014,7 +2014,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ALICEUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ALICEUSDT end of short trade" in dt) and (status_trade_ALICEUSDT == -1) and curr_num > 0:
+            if ("ALICEUSDT end of short trade" in dt) and (status_trade_ALICEUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ALICEUSDT:
@@ -2023,7 +2023,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ALICEUSDT LONG" in dt and status_trade_ALICEUSDT == -1 and curr_num <= max_trade:
+            if "ALICEUSDT LONG" in dt and (status_trade_ALICEUSDT == -1 or status_trade_ALICEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ALICEUSDT:
@@ -2031,7 +2031,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ALICEUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ALICEUSDT SHORT" in dt and status_trade_ALICEUSDT == 1 and curr_num <= max_trade:
+            if "ALICEUSDT SHORT" in dt and (status_trade_ALICEUSDT == -1 or status_trade_ALICEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ALICEUSDT:
@@ -2066,7 +2066,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_C98USDT = 0
                     curr_num = curr_num - 1
 
-            if ("C98USDT end of short trade" in dt) and (status_trade_C98USDT == -1) and curr_num > 0:
+            if ("C98USDT end of short trade" in dt) and (status_trade_C98USDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_C98USDT:
@@ -2118,7 +2118,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_AAVEUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("AAVEUSDT end of short trade" in dt) and (status_trade_AAVEUSDT == -1) and curr_num > 0:
+            if ("AAVEUSDT end of short trade" in dt) and (status_trade_AAVEUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_AAVEUSDT:
@@ -2127,7 +2127,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "AAVEUSDT LONG" in dt and status_trade_AAVEUSDT == -1 and curr_num <= max_trade:
+            if "AAVEUSDT LONG" in dt and (status_trade_AAVEUSDT == -1 or status_trade_AAVEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_AAVEUSDT:
@@ -2135,7 +2135,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_AAVEUSDT = 0
                     curr_num = curr_num - 1
 
-            if "AAVEUSDT SHORT" in dt and status_trade_AAVEUSDT == 1 and curr_num <= max_trade:
+            if "AAVEUSDT SHORT" in dt and (status_trade_AAVEUSDT == -1 or status_trade_AAVEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_AAVEUSDT:
@@ -2170,7 +2170,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_THETAUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("THETAUSDT end of short trade" in dt) and (status_trade_THETAUSDT == -1) and curr_num > 0:
+            if ("THETAUSDT end of short trade" in dt) and (status_trade_THETAUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_THETAUSDT:
@@ -2179,7 +2179,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "THETAUSDT LONG" in dt and status_trade_THETAUSDT == -1 and curr_num <= max_trade:
+            if "THETAUSDT LONG" in dt and (status_trade_THETAUSDT == -1 or status_trade_THETAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_THETAUSDT:
@@ -2187,7 +2187,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_THETAUSDT = 0
                     curr_num = curr_num - 1
 
-            if "THETAUSDT SHORT" in dt and status_trade_THETAUSDT == 1 and curr_num <= max_trade:
+            if "THETAUSDT SHORT" in dt and (status_trade_THETAUSDT == -1 or status_trade_THETAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_THETAUSDT:
@@ -2222,7 +2222,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DASHUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("DASHUSDT end of short trade" in dt) and (status_trade_DASHUSDT == -1) and curr_num > 0:
+            if ("DASHUSDT end of short trade" in dt) and (status_trade_DASHUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DASHUSDT:
@@ -2231,7 +2231,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "DASHUSDT LONG" in dt and status_trade_DASHUSDT == -1 and curr_num <= max_trade:
+            if "DASHUSDT LONG" in dt and (status_trade_DASHUSDT == -1 or status_trade_DASHUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DASHUSDT:
@@ -2239,7 +2239,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DASHUSDT = 0
                     curr_num = curr_num - 1
 
-            if "DASHUSDT SHORT" in dt and status_trade_DASHUSDT == 1 and curr_num <= max_trade:
+            if "DASHUSDT SHORT" in dt and (status_trade_DASHUSDT == -1 or status_trade_DASHUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DASHUSDT:
@@ -2274,7 +2274,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BTSUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("BTSUSDT end of short trade" in dt) and (status_trade_BTSUSDT == -1) and curr_num > 0:
+            if ("BTSUSDT end of short trade" in dt) and (status_trade_BTSUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BTSUSDT:
@@ -2283,7 +2283,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "BTSUSDT LONG" in dt and status_trade_BTSUSDT == -1 and curr_num <= max_trade:
+            if "BTSUSDT LONG" in dt and (status_trade_BTSUSDT == -1 or status_trade_BTSUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BTSUSDT:
@@ -2291,7 +2291,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BTSUSDT = 0
                     curr_num = curr_num - 1
 
-            if "BTSUSDT SHORT" in dt and status_trade_BTSUSDT == 1 and curr_num <= max_trade:
+            if "BTSUSDT SHORT" in dt and (status_trade_BTSUSDT == -1 or status_trade_BTSUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BTSUSDT:
@@ -2326,7 +2326,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_AVAXUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("AVAXUSDT end of short trade" in dt) and (status_trade_AVAXUSDT == -1) and curr_num > 0:
+            if ("AVAXUSDT end of short trade" in dt) and (status_trade_AVAXUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_AVAXUSDT:
@@ -2335,7 +2335,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "AVAXUSDT LONG" in dt and status_trade_AVAXUSDT == -1 and curr_num <= max_trade:
+            if "AVAXUSDT LONG" in dt and (status_trade_AVAXUSDT == -1 or status_trade_AVAXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_AVAXUSDT:
@@ -2343,7 +2343,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_AVAXUSDT = 0
                     curr_num = curr_num - 1
 
-            if "AVAXUSDT SHORT" in dt and status_trade_AVAXUSDT == 1 and curr_num <= max_trade:
+            if "AVAXUSDT SHORT" in dt and (status_trade_AVAXUSDT == -1 or status_trade_AVAXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_AVAXUSDT:
@@ -2378,7 +2378,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BNBUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("BNBUSDT end of short trade" in dt) and (status_trade_BNBUSDT == -1) and curr_num > 0:
+            if ("BNBUSDT end of short trade" in dt) and (status_trade_BNBUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BNBUSDT:
@@ -2387,7 +2387,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "BNBUSDT LONG" in dt and status_trade_BNBUSDT == -1 and curr_num <= max_trade:
+            if "BNBUSDT LONG" in dt and (status_trade_BNBUSDT == -1 or status_trade_BNBUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BNBUSDT:
@@ -2395,7 +2395,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BNBUSDT = 0
                     curr_num = curr_num - 1
 
-            if "BNBUSDT SHORT" in dt and status_trade_BNBUSDT == 1 and curr_num <= max_trade:
+            if "BNBUSDT SHORT" in dt and (status_trade_BNBUSDT == -1 or status_trade_BNBUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BNBUSDT:
@@ -2430,7 +2430,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_COMPUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("COMPUSDT end of short trade" in dt) and (status_trade_COMPUSDT == -1) and curr_num > 0:
+            if ("COMPUSDT end of short trade" in dt) and (status_trade_COMPUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_COMPUSDT:
@@ -2439,7 +2439,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "COMPUSDT LONG" in dt and status_trade_COMPUSDT == -1 and curr_num <= max_trade:
+            if "COMPUSDT LONG" in dt and (status_trade_COMPUSDT == -1 or status_trade_COMPUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_COMPUSDT:
@@ -2447,7 +2447,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_COMPUSDT = 0
                     curr_num = curr_num - 1
 
-            if "COMPUSDT SHORT" in dt and status_trade_COMPUSDT == 1 and curr_num <= max_trade:
+            if "COMPUSDT SHORT" in dt and (status_trade_COMPUSDT == -1 or status_trade_COMPUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_COMPUSDT:
@@ -2482,7 +2482,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BLZUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("BLZUSDT end of short trade" in dt) and (status_trade_BLZUSDT == -1) and curr_num > 0:
+            if ("BLZUSDT end of short trade" in dt) and (status_trade_BLZUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BLZUSDT:
@@ -2491,7 +2491,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "BLZUSDT LONG" in dt and status_trade_BLZUSDT == -1 and curr_num <= max_trade:
+            if "BLZUSDT LONG" in dt and (status_trade_BLZUSDT == -1 or status_trade_BLZUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BLZUSDT:
@@ -2499,7 +2499,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BLZUSDT = 0
                     curr_num = curr_num - 1
 
-            if "BLZUSDT SHORT" in dt and status_trade_BLZUSDT == 1 and curr_num <= max_trade:
+            if "BLZUSDT SHORT" in dt and (status_trade_BLZUSDT == -1 or status_trade_BLZUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BLZUSDT:
@@ -2534,7 +2534,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SNXUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("SNXUSDT end of short trade" in dt) and (status_trade_SNXUSDT == -1) and curr_num > 0:
+            if ("SNXUSDT end of short trade" in dt) and (status_trade_SNXUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SNXUSDT:
@@ -2543,7 +2543,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "SNXUSDT LONG" in dt and status_trade_SNXUSDT == -1 and curr_num <= max_trade:
+            if "SNXUSDT LONG" in dt and (status_trade_SNXUSDT == -1 or status_trade_SNXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SNXUSDT:
@@ -2551,7 +2551,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SNXUSDT = 0
                     curr_num = curr_num - 1
 
-            if "SNXUSDT SHORT" in dt and status_trade_SNXUSDT == 1 and curr_num <= max_trade:
+            if "SNXUSDT SHORT" in dt and (status_trade_SNXUSDT == -1 or status_trade_SNXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SNXUSDT:
@@ -2586,7 +2586,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_KAVAUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("KAVAUSDT end of short trade" in dt) and (status_trade_KAVAUSDT == -1) and curr_num > 0:
+            if ("KAVAUSDT end of short trade" in dt) and (status_trade_KAVAUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_KAVAUSDT:
@@ -2595,7 +2595,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "KAVAUSDT LONG" in dt and status_trade_KAVAUSDT == -1 and curr_num <= max_trade:
+            if "KAVAUSDT LONG" in dt and (status_trade_KAVAUSDT == -1 or status_trade_KAVAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_KAVAUSDT:
@@ -2603,7 +2603,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_KAVAUSDT = 0
                     curr_num = curr_num - 1
 
-            if "KAVAUSDT SHORT" in dt and status_trade_KAVAUSDT == 1 and curr_num <= max_trade:
+            if "KAVAUSDT SHORT" in dt and (status_trade_KAVAUSDT == -1 or status_trade_KAVAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_KAVAUSDT:
@@ -2638,7 +2638,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_TOMOUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("TOMOUSDT end of short trade" in dt) and (status_trade_TOMOUSDT == -1) and curr_num > 0:
+            if ("TOMOUSDT end of short trade" in dt) and (status_trade_TOMOUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_TOMOUSDT:
@@ -2647,7 +2647,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "TOMOUSDT LONG" in dt and status_trade_TOMOUSDT == -1 and curr_num <= max_trade:
+            if "TOMOUSDT LONG" in dt and (status_trade_TOMOUSDT == -1 or status_trade_TOMOUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_TOMOUSDT:
@@ -2655,7 +2655,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_TOMOUSDT = 0
                     curr_num = curr_num - 1
 
-            if "TOMOUSDT SHORT" in dt and status_trade_TOMOUSDT == 1 and curr_num <= max_trade:
+            if "TOMOUSDT SHORT" in dt and (status_trade_TOMOUSDT == -1 or status_trade_TOMOUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_TOMOUSDT:
@@ -2690,7 +2690,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_IOTAUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("IOTAUSDT end of short trade" in dt) and (status_trade_IOTAUSDT == -1) and curr_num > 0:
+            if ("IOTAUSDT end of short trade" in dt) and (status_trade_IOTAUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_IOTAUSDT:
@@ -2699,7 +2699,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "IOTAUSDT LONG" in dt and status_trade_IOTAUSDT == -1 and curr_num <= max_trade:
+            if "IOTAUSDT LONG" in dt and (status_trade_IOTAUSDT == -1 or status_trade_IOTAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_IOTAUSDT:
@@ -2707,7 +2707,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_IOTAUSDT = 0
                     curr_num = curr_num - 1
 
-            if "IOTAUSDT SHORT" in dt and status_trade_IOTAUSDT == 1 and curr_num <= max_trade:
+            if "IOTAUSDT SHORT" in dt and (status_trade_IOTAUSDT == -1 or status_trade_IOTAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_IOTAUSDT:
@@ -2742,7 +2742,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_RVNUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("RVNUSDT end of short trade" in dt) and (status_trade_RVNUSDT == -1) and curr_num > 0:
+            if ("RVNUSDT end of short trade" in dt) and (status_trade_RVNUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RVNUSDT:
@@ -2751,7 +2751,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "RVNUSDT LONG" in dt and status_trade_RVNUSDT == -1 and curr_num <= max_trade:
+            if "RVNUSDT LONG" in dt and (status_trade_RVNUSDT == -1 or status_trade_RVNUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RVNUSDT:
@@ -2759,7 +2759,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_RVNUSDT = 0
                     curr_num = curr_num - 1
 
-            if "RVNUSDT SHORT" in dt and status_trade_RVNUSDT == 1 and curr_num <= max_trade:
+            if "RVNUSDT SHORT" in dt and (status_trade_RVNUSDT == -1 or status_trade_RVNUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RVNUSDT:
@@ -2794,7 +2794,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_UNIUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("UNIUSDT end of short trade" in dt) and (status_trade_UNIUSDT == -1) and curr_num > 0:
+            if ("UNIUSDT end of short trade" in dt) and (status_trade_UNIUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_UNIUSDT:
@@ -2803,7 +2803,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "UNIUSDT LONG" in dt and status_trade_UNIUSDT == -1 and curr_num <= max_trade:
+            if "UNIUSDT LONG" in dt and (status_trade_UNIUSDT == -1 or status_trade_UNIUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_UNIUSDT:
@@ -2811,7 +2811,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_UNIUSDT = 0
                     curr_num = curr_num - 1
 
-            if "UNIUSDT SHORT" in dt and status_trade_UNIUSDT == 1 and curr_num <= max_trade:
+            if "UNIUSDT SHORT" in dt and (status_trade_UNIUSDT == -1 or status_trade_UNIUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_UNIUSDT:
@@ -2846,7 +2846,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_IOTXUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("IOTXUSDT end of short trade" in dt) and (status_trade_IOTXUSDT == -1) and curr_num > 0:
+            if ("IOTXUSDT end of short trade" in dt) and (status_trade_IOTXUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_IOTXUSDT:
@@ -2855,7 +2855,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "IOTXUSDT LONG" in dt and status_trade_IOTXUSDT == -1 and curr_num <= max_trade:
+            if "IOTXUSDT LONG" in dt and (status_trade_IOTXUSDT == -1 or status_trade_IOTXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_IOTXUSDT:
@@ -2863,7 +2863,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_IOTXUSDT = 0
                     curr_num = curr_num - 1
 
-            if "IOTXUSDT SHORT" in dt and status_trade_IOTXUSDT == 1 and curr_num <= max_trade:
+            if "IOTXUSDT SHORT" in dt and (status_trade_IOTXUSDT == -1 or status_trade_IOTXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_IOTXUSDT:
@@ -2898,7 +2898,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ONEUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ONEUSDT end of short trade" in dt) and (status_trade_ONEUSDT == -1) and curr_num > 0:
+            if ("ONEUSDT end of short trade" in dt) and (status_trade_ONEUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ONEUSDT:
@@ -2907,7 +2907,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ONEUSDT LONG" in dt and status_trade_ONEUSDT == -1 and curr_num <= max_trade:
+            if "ONEUSDT LONG" in dt and (status_trade_ONEUSDT == -1 or status_trade_ONEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ONEUSDT:
@@ -2915,7 +2915,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ONEUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ONEUSDT SHORT" in dt and status_trade_ONEUSDT == 1 and curr_num <= max_trade:
+            if "ONEUSDT SHORT" in dt and (status_trade_ONEUSDT == -1 or status_trade_ONEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ONEUSDT:
@@ -2950,7 +2950,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_RUNEUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("RUNEUSDT end of short trade" in dt) and (status_trade_RUNEUSDT == -1) and curr_num > 0:
+            if ("RUNEUSDT end of short trade" in dt) and (status_trade_RUNEUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RUNEUSDT:
@@ -2959,7 +2959,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "RUNEUSDT LONG" in dt and status_trade_RUNEUSDT == -1 and curr_num <= max_trade:
+            if "RUNEUSDT LONG" in dt and (status_trade_RUNEUSDT == -1 or status_trade_RUNEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RUNEUSDT:
@@ -2967,7 +2967,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_RUNEUSDT = 0
                     curr_num = curr_num - 1
 
-            if "RUNEUSDT SHORT" in dt and status_trade_RUNEUSDT == 1 and curr_num <= max_trade:
+            if "RUNEUSDT SHORT" in dt and (status_trade_RUNEUSDT == -1 or status_trade_RUNEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RUNEUSDT:
@@ -3002,7 +3002,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_RLCUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("RLCUSDT end of short trade" in dt) and (status_trade_RLCUSDT == -1) and curr_num > 0:
+            if ("RLCUSDT end of short trade" in dt) and (status_trade_RLCUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RLCUSDT:
@@ -3011,7 +3011,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "RLCUSDT LONG" in dt and status_trade_RLCUSDT == -1 and curr_num <= max_trade:
+            if "RLCUSDT LONG" in dt and (status_trade_RLCUSDT == -1 or status_trade_RLCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RLCUSDT:
@@ -3019,7 +3019,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_RLCUSDT = 0
                     curr_num = curr_num - 1
 
-            if "RLCUSDT SHORT" in dt and status_trade_RLCUSDT == 1 and curr_num <= max_trade:
+            if "RLCUSDT SHORT" in dt and (status_trade_RLCUSDT == -1 or status_trade_RLCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RLCUSDT:
@@ -3054,7 +3054,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_EOSUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("EOSUSDT end of short trade" in dt) and (status_trade_EOSUSDT == -1) and curr_num > 0:
+            if ("EOSUSDT end of short trade" in dt) and (status_trade_EOSUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_EOSUSDT:
@@ -3063,7 +3063,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "EOSUSDT LONG" in dt and status_trade_EOSUSDT == -1 and curr_num <= max_trade:
+            if "EOSUSDT LONG" in dt and (status_trade_EOSUSDT == -1 or status_trade_EOSUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_EOSUSDT:
@@ -3071,7 +3071,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_EOSUSDT = 0
                     curr_num = curr_num - 1
 
-            if "EOSUSDT SHORT" in dt and status_trade_EOSUSDT == 1 and curr_num <= max_trade:
+            if "EOSUSDT SHORT" in dt and (status_trade_EOSUSDT == -1 or status_trade_EOSUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_EOSUSDT:
@@ -3106,7 +3106,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SUSHIUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("SUSHIUSDT end of short trade" in dt) and (status_trade_SUSHIUSDT == -1) and curr_num > 0:
+            if ("SUSHIUSDT end of short trade" in dt) and (status_trade_SUSHIUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SUSHIUSDT:
@@ -3115,7 +3115,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "SUSHIUSDT LONG" in dt and status_trade_SUSHIUSDT == -1 and curr_num <= max_trade:
+            if "SUSHIUSDT LONG" in dt and (status_trade_SUSHIUSDT == -1 or status_trade_SUSHIUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SUSHIUSDT:
@@ -3123,7 +3123,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SUSHIUSDT = 0
                     curr_num = curr_num - 1
 
-            if "SUSHIUSDT SHORT" in dt and status_trade_SUSHIUSDT == 1 and curr_num <= max_trade:
+            if "SUSHIUSDT SHORT" in dt and (status_trade_SUSHIUSDT == -1 or status_trade_SUSHIUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SUSHIUSDT:
@@ -3158,7 +3158,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_WAVESUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("WAVESUSDT end of short trade" in dt) and (status_trade_WAVESUSDT == -1) and curr_num > 0:
+            if ("WAVESUSDT end of short trade" in dt) and (status_trade_WAVESUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_WAVESUSDT:
@@ -3167,7 +3167,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "WAVESUSDT LONG" in dt and status_trade_WAVESUSDT == -1 and curr_num <= max_trade:
+            if "WAVESUSDT LONG" in dt and (status_trade_WAVESUSDT == -1 or status_trade_WAVESUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_WAVESUSDT:
@@ -3175,7 +3175,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_WAVESUSDT = 0
                     curr_num = curr_num - 1
 
-            if "WAVESUSDT SHORT" in dt and status_trade_WAVESUSDT == 1 and curr_num <= max_trade:
+            if "WAVESUSDT SHORT" in dt and (status_trade_WAVESUSDT == -1 or status_trade_WAVESUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_WAVESUSDT:
@@ -3210,7 +3210,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_VETUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("VETUSDT end of short trade" in dt) and (status_trade_VETUSDT == -1) and curr_num > 0:
+            if ("VETUSDT end of short trade" in dt) and (status_trade_VETUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_VETUSDT:
@@ -3219,7 +3219,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "VETUSDT LONG" in dt and status_trade_VETUSDT == -1 and curr_num <= max_trade:
+            if "VETUSDT LONG" in dt and (status_trade_VETUSDT == -1 or status_trade_VETUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_VETUSDT:
@@ -3227,7 +3227,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_VETUSDT = 0
                     curr_num = curr_num - 1
 
-            if "VETUSDT SHORT" in dt and status_trade_VETUSDT == 1 and curr_num <= max_trade:
+            if "VETUSDT SHORT" in dt and (status_trade_VETUSDT == -1 or status_trade_VETUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_VETUSDT:
@@ -3262,7 +3262,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ZECUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ZECUSDT end of short trade" in dt) and (status_trade_ZECUSDT == -1) and curr_num > 0:
+            if ("ZECUSDT end of short trade" in dt) and (status_trade_ZECUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ZECUSDT:
@@ -3271,7 +3271,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ZECUSDT LONG" in dt and status_trade_ZECUSDT == -1 and curr_num <= max_trade:
+            if "ZECUSDT LONG" in dt and (status_trade_ZECUSDT == -1 or status_trade_ZECUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ZECUSDT:
@@ -3279,7 +3279,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ZECUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ZECUSDT SHORT" in dt and status_trade_ZECUSDT == 1 and curr_num <= max_trade:
+            if "ZECUSDT SHORT" in dt and (status_trade_ZECUSDT == -1 or status_trade_ZECUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ZECUSDT:
@@ -3314,7 +3314,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_XMRUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("XMRUSDT end of short trade" in dt) and (status_trade_XMRUSDT == -1) and curr_num > 0:
+            if ("XMRUSDT end of short trade" in dt) and (status_trade_XMRUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XMRUSDT:
@@ -3323,7 +3323,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "XMRUSDT LONG" in dt and status_trade_XMRUSDT == -1 and curr_num <= max_trade:
+            if "XMRUSDT LONG" in dt and (status_trade_XMRUSDT == -1 or status_trade_XMRUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XMRUSDT:
@@ -3331,7 +3331,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_XMRUSDT = 0
                     curr_num = curr_num - 1
 
-            if "XMRUSDT SHORT" in dt and status_trade_XMRUSDT == 1 and curr_num <= max_trade:
+            if "XMRUSDT SHORT" in dt and (status_trade_XMRUSDT == -1 or status_trade_XMRUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XMRUSDT:
@@ -3366,7 +3366,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_MASKUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("MASKUSDT end of short trade" in dt) and (status_trade_MASKUSDT == -1) and curr_num > 0:
+            if ("MASKUSDT end of short trade" in dt) and (status_trade_MASKUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MASKUSDT:
@@ -3375,7 +3375,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "MASKUSDT LONG" in dt and status_trade_MASKUSDT == -1 and curr_num <= max_trade:
+            if "MASKUSDT LONG" in dt and (status_trade_MASKUSDT == -1 or status_trade_MASKUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MASKUSDT:
@@ -3383,7 +3383,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_MASKUSDT = 0
                     curr_num = curr_num - 1
 
-            if "MASKUSDT SHORT" in dt and status_trade_MASKUSDT == 1 and curr_num <= max_trade:
+            if "MASKUSDT SHORT" in dt and (status_trade_MASKUSDT == -1 or status_trade_MASKUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MASKUSDT:
@@ -3418,7 +3418,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_STORJUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("STORJUSDT end of short trade" in dt) and (status_trade_STORJUSDT == -1) and curr_num > 0:
+            if ("STORJUSDT end of short trade" in dt) and (status_trade_STORJUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_STORJUSDT:
@@ -3427,7 +3427,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "STORJUSDT LONG" in dt and status_trade_STORJUSDT == -1 and curr_num <= max_trade:
+            if "STORJUSDT LONG" in dt and (status_trade_STORJUSDT == -1 or status_trade_STORJUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_STORJUSDT:
@@ -3435,7 +3435,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_STORJUSDT = 0
                     curr_num = curr_num - 1
 
-            if "STORJUSDT SHORT" in dt and status_trade_STORJUSDT == 1 and curr_num <= max_trade:
+            if "STORJUSDT SHORT" in dt and (status_trade_STORJUSDT == -1 or status_trade_STORJUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_STORJUSDT:
@@ -3470,7 +3470,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_XEMUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("XEMUSDT end of short trade" in dt) and (status_trade_XEMUSDT == -1) and curr_num > 0:
+            if ("XEMUSDT end of short trade" in dt) and (status_trade_XEMUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XEMUSDT:
@@ -3479,7 +3479,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "XEMUSDT LONG" in dt and status_trade_XEMUSDT == -1 and curr_num <= max_trade:
+            if "XEMUSDT LONG" in dt and (status_trade_XEMUSDT == -1 or status_trade_XEMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XEMUSDT:
@@ -3487,7 +3487,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_XEMUSDT = 0
                     curr_num = curr_num - 1
 
-            if "XEMUSDT SHORT" in dt and status_trade_XEMUSDT == 1 and curr_num <= max_trade:
+            if "XEMUSDT SHORT" in dt and (status_trade_XEMUSDT == -1 or status_trade_XEMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_XEMUSDT:
@@ -3522,7 +3522,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_KLAYUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("KLAYUSDT end of short trade" in dt) and (status_trade_KLAYUSDT == -1) and curr_num > 0:
+            if ("KLAYUSDT end of short trade" in dt) and (status_trade_KLAYUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_KLAYUSDT:
@@ -3531,7 +3531,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "KLAYUSDT LONG" in dt and status_trade_KLAYUSDT == -1 and curr_num <= max_trade:
+            if "KLAYUSDT LONG" in dt and (status_trade_KLAYUSDT == -1 or status_trade_KLAYUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_KLAYUSDT:
@@ -3539,7 +3539,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_KLAYUSDT = 0
                     curr_num = curr_num - 1
 
-            if "KLAYUSDT SHORT" in dt and status_trade_KLAYUSDT == 1 and curr_num <= max_trade:
+            if "KLAYUSDT SHORT" in dt and (status_trade_KLAYUSDT == -1 or status_trade_KLAYUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_KLAYUSDT:
@@ -3574,7 +3574,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DOGEUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("DOGEUSDT end of short trade" in dt) and (status_trade_DOGEUSDT == -1) and curr_num > 0:
+            if ("DOGEUSDT end of short trade" in dt) and (status_trade_DOGEUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DOGEUSDT:
@@ -3583,7 +3583,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "DOGEUSDT LONG" in dt and status_trade_DOGEUSDT == -1 and curr_num <= max_trade:
+            if "DOGEUSDT LONG" in dt and (status_trade_DOGEUSDT == -1 or status_trade_DOGEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DOGEUSDT:
@@ -3591,7 +3591,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DOGEUSDT = 0
                     curr_num = curr_num - 1
 
-            if "DOGEUSDT SHORT" in dt and status_trade_DOGEUSDT == 1 and curr_num <= max_trade:
+            if "DOGEUSDT SHORT" in dt and (status_trade_DOGEUSDT == -1 or status_trade_DOGEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DOGEUSDT:
@@ -3626,7 +3626,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_AUDIOUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("AUDIOUSDT end of short trade" in dt) and (status_trade_AUDIOUSDT == -1) and curr_num > 0:
+            if ("AUDIOUSDT end of short trade" in dt) and (status_trade_AUDIOUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_AUDIOUSDT:
@@ -3635,7 +3635,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "AUDIOUSDT LONG" in dt and status_trade_AUDIOUSDT == -1 and curr_num <= max_trade:
+            if "AUDIOUSDT LONG" in dt and (status_trade_AUDIOUSDT == -1 or status_trade_AUDIOUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_AUDIOUSDT:
@@ -3643,7 +3643,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_AUDIOUSDT = 0
                     curr_num = curr_num - 1
 
-            if "AUDIOUSDT SHORT" in dt and status_trade_AUDIOUSDT == 1 and curr_num <= max_trade:
+            if "AUDIOUSDT SHORT" in dt and (status_trade_AUDIOUSDT == -1 or status_trade_AUDIOUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_AUDIOUSDT:
@@ -3678,7 +3678,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_1INCHUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("1INCHUSDT end of short trade" in dt) and (status_trade_1INCHUSDT == -1) and curr_num > 0:
+            if ("1INCHUSDT end of short trade" in dt) and (status_trade_1INCHUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_1INCHUSDT:
@@ -3730,7 +3730,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_OGNUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("OGNUSDT end of short trade" in dt) and (status_trade_OGNUSDT == -1) and curr_num > 0:
+            if ("OGNUSDT end of short trade" in dt) and (status_trade_OGNUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_OGNUSDT:
@@ -3739,7 +3739,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "OGNUSDT LONG" in dt and status_trade_OGNUSDT == -1 and curr_num <= max_trade:
+            if "OGNUSDT LONG" in dt and (status_trade_OGNUSDT == -1 or status_trade_OGNUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_OGNUSDT:
@@ -3747,7 +3747,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_OGNUSDT = 0
                     curr_num = curr_num - 1
 
-            if "OGNUSDT SHORT" in dt and status_trade_OGNUSDT == 1 and curr_num <= max_trade:
+            if "OGNUSDT SHORT" in dt and (status_trade_OGNUSDT == -1 or status_trade_OGNUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_OGNUSDT:
@@ -3782,7 +3782,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_KSMUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("KSMUSDT end of short trade" in dt) and (status_trade_KSMUSDT == -1) and curr_num > 0:
+            if ("KSMUSDT end of short trade" in dt) and (status_trade_KSMUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_KSMUSDT:
@@ -3791,7 +3791,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "KSMUSDT LONG" in dt and status_trade_KSMUSDT == -1 and curr_num <= max_trade:
+            if "KSMUSDT LONG" in dt and (status_trade_KSMUSDT == -1 or status_trade_KSMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_KSMUSDT:
@@ -3799,7 +3799,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_KSMUSDT = 0
                     curr_num = curr_num - 1
 
-            if "KSMUSDT SHORT" in dt and status_trade_KSMUSDT == 1 and curr_num <= max_trade:
+            if "KSMUSDT SHORT" in dt and (status_trade_KSMUSDT == -1 or status_trade_KSMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_KSMUSDT:
@@ -3834,7 +3834,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_MTLUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("MTLUSDT end of short trade" in dt) and (status_trade_MTLUSDT == -1) and curr_num > 0:
+            if ("MTLUSDT end of short trade" in dt) and (status_trade_MTLUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MTLUSDT:
@@ -3843,7 +3843,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "MTLUSDT LONG" in dt and status_trade_MTLUSDT == -1 and curr_num <= max_trade:
+            if "MTLUSDT LONG" in dt and (status_trade_MTLUSDT == -1 or status_trade_MTLUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MTLUSDT:
@@ -3851,7 +3851,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_MTLUSDT = 0
                     curr_num = curr_num - 1
 
-            if "MTLUSDT SHORT" in dt and status_trade_MTLUSDT == 1 and curr_num <= max_trade:
+            if "MTLUSDT SHORT" in dt and (status_trade_MTLUSDT == -1 or status_trade_MTLUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MTLUSDT:
@@ -3886,7 +3886,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BCHUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("BCHUSDT end of short trade" in dt) and (status_trade_BCHUSDT == -1) and curr_num > 0:
+            if ("BCHUSDT end of short trade" in dt) and (status_trade_BCHUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BCHUSDT:
@@ -3895,7 +3895,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "BCHUSDT LONG" in dt and status_trade_BCHUSDT == -1 and curr_num <= max_trade:
+            if "BCHUSDT LONG" in dt and (status_trade_BCHUSDT == -1 or status_trade_BCHUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BCHUSDT:
@@ -3903,7 +3903,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BCHUSDT = 0
                     curr_num = curr_num - 1
 
-            if "BCHUSDT SHORT" in dt and status_trade_BCHUSDT == 1 and curr_num <= max_trade:
+            if "BCHUSDT SHORT" in dt and (status_trade_BCHUSDT == -1 or status_trade_BCHUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BCHUSDT:
@@ -3938,7 +3938,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ICPUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ICPUSDT end of short trade" in dt) and (status_trade_ICPUSDT == -1) and curr_num > 0:
+            if ("ICPUSDT end of short trade" in dt) and (status_trade_ICPUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ICPUSDT:
@@ -3947,7 +3947,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ICPUSDT LONG" in dt and status_trade_ICPUSDT == -1 and curr_num <= max_trade:
+            if "ICPUSDT LONG" in dt and (status_trade_ICPUSDT == -1 or status_trade_ICPUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ICPUSDT:
@@ -3955,7 +3955,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ICPUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ICPUSDT SHORT" in dt and status_trade_ICPUSDT == 1 and curr_num <= max_trade:
+            if "ICPUSDT SHORT" in dt and (status_trade_ICPUSDT == -1 or status_trade_ICPUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ICPUSDT:
@@ -3990,7 +3990,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_TRBUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("TRBUSDT end of short trade" in dt) and (status_trade_TRBUSDT == -1) and curr_num > 0:
+            if ("TRBUSDT end of short trade" in dt) and (status_trade_TRBUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_TRBUSDT:
@@ -3999,7 +3999,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "TRBUSDT LONG" in dt and status_trade_TRBUSDT == -1 and curr_num <= max_trade:
+            if "TRBUSDT LONG" in dt and (status_trade_TRBUSDT == -1 or status_trade_TRBUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_TRBUSDT:
@@ -4007,7 +4007,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_TRBUSDT = 0
                     curr_num = curr_num - 1
 
-            if "TRBUSDT SHORT" in dt and status_trade_TRBUSDT == 1 and curr_num <= max_trade:
+            if "TRBUSDT SHORT" in dt and (status_trade_TRBUSDT == -1 or status_trade_TRBUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_TRBUSDT:
@@ -4042,7 +4042,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ETHUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ETHUSDT end of short trade" in dt) and (status_trade_ETHUSDT == -1) and curr_num > 0:
+            if ("ETHUSDT end of short trade" in dt) and (status_trade_ETHUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ETHUSDT:
@@ -4051,7 +4051,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ETHUSDT LONG" in dt and status_trade_ETHUSDT == -1 and curr_num <= max_trade:
+            if "ETHUSDT LONG" in dt and (status_trade_ETHUSDT == -1 or status_trade_ETHUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ETHUSDT:
@@ -4059,7 +4059,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ETHUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ETHUSDT SHORT" in dt and status_trade_ETHUSDT == 1 and curr_num <= max_trade:
+            if "ETHUSDT SHORT" in dt and (status_trade_ETHUSDT == -1 or status_trade_ETHUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ETHUSDT:
@@ -4094,7 +4094,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ETCUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ETCUSDT end of short trade" in dt) and (status_trade_ETCUSDT == -1) and curr_num > 0:
+            if ("ETCUSDT end of short trade" in dt) and (status_trade_ETCUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ETCUSDT:
@@ -4103,7 +4103,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ETCUSDT LONG" in dt and status_trade_ETCUSDT == -1 and curr_num <= max_trade:
+            if "ETCUSDT LONG" in dt and (status_trade_ETCUSDT == -1 or status_trade_ETCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ETCUSDT:
@@ -4111,7 +4111,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ETCUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ETCUSDT SHORT" in dt and status_trade_ETCUSDT == 1 and curr_num <= max_trade:
+            if "ETCUSDT SHORT" in dt and (status_trade_ETCUSDT == -1 or status_trade_ETCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ETCUSDT:
@@ -4146,7 +4146,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ATOMUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ATOMUSDT end of short trade" in dt) and (status_trade_ATOMUSDT == -1) and curr_num > 0:
+            if ("ATOMUSDT end of short trade" in dt) and (status_trade_ATOMUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ATOMUSDT:
@@ -4155,7 +4155,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ATOMUSDT LONG" in dt and status_trade_ATOMUSDT == -1 and curr_num <= max_trade:
+            if "ATOMUSDT LONG" in dt and (status_trade_ATOMUSDT == -1 or status_trade_ATOMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ATOMUSDT:
@@ -4163,7 +4163,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ATOMUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ATOMUSDT SHORT" in dt and status_trade_ATOMUSDT == 1 and curr_num <= max_trade:
+            if "ATOMUSDT SHORT" in dt and (status_trade_ATOMUSDT == -1 or status_trade_ATOMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ATOMUSDT:
@@ -4198,7 +4198,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ONTUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ONTUSDT end of short trade" in dt) and (status_trade_ONTUSDT == -1) and curr_num > 0:
+            if ("ONTUSDT end of short trade" in dt) and (status_trade_ONTUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ONTUSDT:
@@ -4207,7 +4207,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ONTUSDT LONG" in dt and status_trade_ONTUSDT == -1 and curr_num <= max_trade:
+            if "ONTUSDT LONG" in dt and (status_trade_ONTUSDT == -1 or status_trade_ONTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ONTUSDT:
@@ -4215,7 +4215,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ONTUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ONTUSDT SHORT" in dt and status_trade_ONTUSDT == 1 and curr_num <= max_trade:
+            if "ONTUSDT SHORT" in dt and (status_trade_ONTUSDT == -1 or status_trade_ONTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ONTUSDT:
@@ -4250,7 +4250,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BATUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("BATUSDT end of short trade" in dt) and (status_trade_BATUSDT == -1) and curr_num > 0:
+            if ("BATUSDT end of short trade" in dt) and (status_trade_BATUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BATUSDT:
@@ -4259,7 +4259,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "BATUSDT LONG" in dt and status_trade_BATUSDT == -1 and curr_num <= max_trade:
+            if "BATUSDT LONG" in dt and (status_trade_BATUSDT == -1 or status_trade_BATUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BATUSDT:
@@ -4267,7 +4267,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BATUSDT = 0
                     curr_num = curr_num - 1
 
-            if "BATUSDT SHORT" in dt and status_trade_BATUSDT == 1 and curr_num <= max_trade:
+            if "BATUSDT SHORT" in dt and (status_trade_BATUSDT == -1 or status_trade_BATUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BATUSDT:
@@ -4302,7 +4302,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_NEOUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("NEOUSDT end of short trade" in dt) and (status_trade_NEOUSDT == -1) and curr_num > 0:
+            if ("NEOUSDT end of short trade" in dt) and (status_trade_NEOUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_NEOUSDT:
@@ -4311,7 +4311,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "NEOUSDT LONG" in dt and status_trade_NEOUSDT == -1 and curr_num <= max_trade:
+            if "NEOUSDT LONG" in dt and (status_trade_NEOUSDT == -1 or status_trade_NEOUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_NEOUSDT:
@@ -4319,7 +4319,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_NEOUSDT = 0
                     curr_num = curr_num - 1
 
-            if "NEOUSDT SHORT" in dt and status_trade_NEOUSDT == 1 and curr_num <= max_trade:
+            if "NEOUSDT SHORT" in dt and (status_trade_NEOUSDT == -1 or status_trade_NEOUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_NEOUSDT:
@@ -4354,7 +4354,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_IOSTUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("IOSTUSDT end of short trade" in dt) and (status_trade_IOSTUSDT == -1) and curr_num > 0:
+            if ("IOSTUSDT end of short trade" in dt) and (status_trade_IOSTUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_IOSTUSDT:
@@ -4363,7 +4363,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "IOSTUSDT LONG" in dt and status_trade_IOSTUSDT == -1 and curr_num <= max_trade:
+            if "IOSTUSDT LONG" in dt and (status_trade_IOSTUSDT == -1 or status_trade_IOSTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_IOSTUSDT:
@@ -4371,7 +4371,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_IOSTUSDT = 0
                     curr_num = curr_num - 1
 
-            if "IOSTUSDT SHORT" in dt and status_trade_IOSTUSDT == 1 and curr_num <= max_trade:
+            if "IOSTUSDT SHORT" in dt and (status_trade_IOSTUSDT == -1 or status_trade_IOSTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_IOSTUSDT:
@@ -4406,7 +4406,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_KNCUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("KNCUSDT end of short trade" in dt) and (status_trade_KNCUSDT == -1) and curr_num > 0:
+            if ("KNCUSDT end of short trade" in dt) and (status_trade_KNCUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_KNCUSDT:
@@ -4415,7 +4415,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "KNCUSDT LONG" in dt and status_trade_KNCUSDT == -1 and curr_num <= max_trade:
+            if "KNCUSDT LONG" in dt and (status_trade_KNCUSDT == -1 or status_trade_KNCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_KNCUSDT:
@@ -4423,7 +4423,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_KNCUSDT = 0
                     curr_num = curr_num - 1
 
-            if "KNCUSDT SHORT" in dt and status_trade_KNCUSDT == 1 and curr_num <= max_trade:
+            if "KNCUSDT SHORT" in dt and (status_trade_KNCUSDT == -1 or status_trade_KNCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_KNCUSDT:
@@ -4458,7 +4458,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SXPUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("SXPUSDT end of short trade" in dt) and (status_trade_SXPUSDT == -1) and curr_num > 0:
+            if ("SXPUSDT end of short trade" in dt) and (status_trade_SXPUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SXPUSDT:
@@ -4467,7 +4467,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "SXPUSDT LONG" in dt and status_trade_SXPUSDT == -1 and curr_num <= max_trade:
+            if "SXPUSDT LONG" in dt and (status_trade_SXPUSDT == -1 or status_trade_SXPUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SXPUSDT:
@@ -4475,7 +4475,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SXPUSDT = 0
                     curr_num = curr_num - 1
 
-            if "SXPUSDT SHORT" in dt and status_trade_SXPUSDT == 1 and curr_num <= max_trade:
+            if "SXPUSDT SHORT" in dt and (status_trade_SXPUSDT == -1 or status_trade_SXPUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SXPUSDT:
@@ -4510,7 +4510,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ZILUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ZILUSDT end of short trade" in dt) and (status_trade_ZILUSDT == -1) and curr_num > 0:
+            if ("ZILUSDT end of short trade" in dt) and (status_trade_ZILUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ZILUSDT:
@@ -4519,7 +4519,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ZILUSDT LONG" in dt and status_trade_ZILUSDT == -1 and curr_num <= max_trade:
+            if "ZILUSDT LONG" in dt and (status_trade_ZILUSDT == -1 or status_trade_ZILUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ZILUSDT:
@@ -4527,7 +4527,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ZILUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ZILUSDT SHORT" in dt and status_trade_ZILUSDT == 1 and curr_num <= max_trade:
+            if "ZILUSDT SHORT" in dt and (status_trade_ZILUSDT == -1 or status_trade_ZILUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ZILUSDT:
@@ -4562,7 +4562,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BANDUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("BANDUSDT end of short trade" in dt) and (status_trade_BANDUSDT == -1) and curr_num > 0:
+            if ("BANDUSDT end of short trade" in dt) and (status_trade_BANDUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BANDUSDT:
@@ -4571,7 +4571,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "BANDUSDT LONG" in dt and status_trade_BANDUSDT == -1 and curr_num <= max_trade:
+            if "BANDUSDT LONG" in dt and (status_trade_BANDUSDT == -1 or status_trade_BANDUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BANDUSDT:
@@ -4579,7 +4579,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BANDUSDT = 0
                     curr_num = curr_num - 1
 
-            if "BANDUSDT SHORT" in dt and status_trade_BANDUSDT == 1 and curr_num <= max_trade:
+            if "BANDUSDT SHORT" in dt and (status_trade_BANDUSDT == -1 or status_trade_BANDUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BANDUSDT:
@@ -4614,7 +4614,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_MKRUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("MKRUSDT end of short trade" in dt) and (status_trade_MKRUSDT == -1) and curr_num > 0:
+            if ("MKRUSDT end of short trade" in dt) and (status_trade_MKRUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MKRUSDT:
@@ -4623,7 +4623,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "MKRUSDT LONG" in dt and status_trade_MKRUSDT == -1 and curr_num <= max_trade:
+            if "MKRUSDT LONG" in dt and (status_trade_MKRUSDT == -1 or status_trade_MKRUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MKRUSDT:
@@ -4631,7 +4631,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_MKRUSDT = 0
                     curr_num = curr_num - 1
 
-            if "MKRUSDT SHORT" in dt and status_trade_MKRUSDT == 1 and curr_num <= max_trade:
+            if "MKRUSDT SHORT" in dt and (status_trade_MKRUSDT == -1 or status_trade_MKRUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MKRUSDT:
@@ -4666,7 +4666,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DEFIUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("DEFIUSDT end of short trade" in dt) and (status_trade_DEFIUSDT == -1) and curr_num > 0:
+            if ("DEFIUSDT end of short trade" in dt) and (status_trade_DEFIUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DEFIUSDT:
@@ -4675,7 +4675,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "DEFIUSDT LONG" in dt and status_trade_DEFIUSDT == -1 and curr_num <= max_trade:
+            if "DEFIUSDT LONG" in dt and (status_trade_DEFIUSDT == -1 or status_trade_DEFIUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DEFIUSDT:
@@ -4683,7 +4683,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DEFIUSDT = 0
                     curr_num = curr_num - 1
 
-            if "DEFIUSDT SHORT" in dt and status_trade_DEFIUSDT == 1 and curr_num <= max_trade:
+            if "DEFIUSDT SHORT" in dt and (status_trade_DEFIUSDT == -1 or status_trade_DEFIUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DEFIUSDT:
@@ -4718,7 +4718,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BALUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("BALUSDT end of short trade" in dt) and (status_trade_BALUSDT == -1) and curr_num > 0:
+            if ("BALUSDT end of short trade" in dt) and (status_trade_BALUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BALUSDT:
@@ -4727,7 +4727,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "BALUSDT LONG" in dt and status_trade_BALUSDT == -1 and curr_num <= max_trade:
+            if "BALUSDT LONG" in dt and (status_trade_BALUSDT == -1 or status_trade_BALUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BALUSDT:
@@ -4735,7 +4735,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BALUSDT = 0
                     curr_num = curr_num - 1
 
-            if "BALUSDT SHORT" in dt and status_trade_BALUSDT == 1 and curr_num <= max_trade:
+            if "BALUSDT SHORT" in dt and (status_trade_BALUSDT == -1 or status_trade_BALUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BALUSDT:
@@ -4770,7 +4770,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CRVUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("CRVUSDT end of short trade" in dt) and (status_trade_CRVUSDT == -1) and curr_num > 0:
+            if ("CRVUSDT end of short trade" in dt) and (status_trade_CRVUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CRVUSDT:
@@ -4779,7 +4779,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "CRVUSDT LONG" in dt and status_trade_CRVUSDT == -1 and curr_num <= max_trade:
+            if "CRVUSDT LONG" in dt and (status_trade_CRVUSDT == -1 or status_trade_CRVUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CRVUSDT:
@@ -4787,7 +4787,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CRVUSDT = 0
                     curr_num = curr_num - 1
 
-            if "CRVUSDT SHORT" in dt and status_trade_CRVUSDT == 1 and curr_num <= max_trade:
+            if "CRVUSDT SHORT" in dt and (status_trade_CRVUSDT == -1 or status_trade_CRVUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CRVUSDT:
@@ -4822,7 +4822,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_EGLDUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("EGLDUSDT end of short trade" in dt) and (status_trade_EGLDUSDT == -1) and curr_num > 0:
+            if ("EGLDUSDT end of short trade" in dt) and (status_trade_EGLDUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_EGLDUSDT:
@@ -4831,7 +4831,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "EGLDUSDT LONG" in dt and status_trade_EGLDUSDT == -1 and curr_num <= max_trade:
+            if "EGLDUSDT LONG" in dt and (status_trade_EGLDUSDT == -1 or status_trade_EGLDUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_EGLDUSDT:
@@ -4839,7 +4839,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_EGLDUSDT = 0
                     curr_num = curr_num - 1
 
-            if "EGLDUSDT SHORT" in dt and status_trade_EGLDUSDT == 1 and curr_num <= max_trade:
+            if "EGLDUSDT SHORT" in dt and (status_trade_EGLDUSDT == -1 or status_trade_EGLDUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_EGLDUSDT:
@@ -4874,7 +4874,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ICXUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ICXUSDT end of short trade" in dt) and (status_trade_ICXUSDT == -1) and curr_num > 0:
+            if ("ICXUSDT end of short trade" in dt) and (status_trade_ICXUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ICXUSDT:
@@ -4883,7 +4883,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ICXUSDT LONG" in dt and status_trade_ICXUSDT == -1 and curr_num <= max_trade:
+            if "ICXUSDT LONG" in dt and (status_trade_ICXUSDT == -1 or status_trade_ICXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ICXUSDT:
@@ -4891,7 +4891,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ICXUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ICXUSDT SHORT" in dt and status_trade_ICXUSDT == 1 and curr_num <= max_trade:
+            if "ICXUSDT SHORT" in dt and (status_trade_ICXUSDT == -1 or status_trade_ICXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ICXUSDT:
@@ -4926,7 +4926,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_HNTUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("HNTUSDT end of short trade" in dt) and (status_trade_HNTUSDT == -1) and curr_num > 0:
+            if ("HNTUSDT end of short trade" in dt) and (status_trade_HNTUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_HNTUSDT:
@@ -4935,7 +4935,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "HNTUSDT LONG" in dt and status_trade_HNTUSDT == -1 and curr_num <= max_trade:
+            if "HNTUSDT LONG" in dt and (status_trade_HNTUSDT == -1 or status_trade_HNTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_HNTUSDT:
@@ -4943,7 +4943,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_HNTUSDT = 0
                     curr_num = curr_num - 1
 
-            if "HNTUSDT SHORT" in dt and status_trade_HNTUSDT == 1 and curr_num <= max_trade:
+            if "HNTUSDT SHORT" in dt and (status_trade_HNTUSDT == -1 or status_trade_HNTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_HNTUSDT:
@@ -4978,7 +4978,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_FLMUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("FLMUSDT end of short trade" in dt) and (status_trade_FLMUSDT == -1) and curr_num > 0:
+            if ("FLMUSDT end of short trade" in dt) and (status_trade_FLMUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FLMUSDT:
@@ -4987,7 +4987,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "FLMUSDT LONG" in dt and status_trade_FLMUSDT == -1 and curr_num <= max_trade:
+            if "FLMUSDT LONG" in dt and (status_trade_FLMUSDT == -1 or status_trade_FLMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FLMUSDT:
@@ -4995,7 +4995,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_FLMUSDT = 0
                     curr_num = curr_num - 1
 
-            if "FLMUSDT SHORT" in dt and status_trade_FLMUSDT == 1 and curr_num <= max_trade:
+            if "FLMUSDT SHORT" in dt and (status_trade_FLMUSDT == -1 or status_trade_FLMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FLMUSDT:
@@ -5030,7 +5030,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_NEARUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("NEARUSDT end of short trade" in dt) and (status_trade_NEARUSDT == -1) and curr_num > 0:
+            if ("NEARUSDT end of short trade" in dt) and (status_trade_NEARUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_NEARUSDT:
@@ -5039,7 +5039,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "NEARUSDT LONG" in dt and status_trade_NEARUSDT == -1 and curr_num <= max_trade:
+            if "NEARUSDT LONG" in dt and (status_trade_NEARUSDT == -1 or status_trade_NEARUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_NEARUSDT:
@@ -5047,7 +5047,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_NEARUSDT = 0
                     curr_num = curr_num - 1
 
-            if "NEARUSDT SHORT" in dt and status_trade_NEARUSDT == 1 and curr_num <= max_trade:
+            if "NEARUSDT SHORT" in dt and (status_trade_NEARUSDT == -1 or status_trade_NEARUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_NEARUSDT:
@@ -5082,7 +5082,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_RSRUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("RSRUSDT end of short trade" in dt) and (status_trade_RSRUSDT == -1) and curr_num > 0:
+            if ("RSRUSDT end of short trade" in dt) and (status_trade_RSRUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RSRUSDT:
@@ -5091,7 +5091,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "RSRUSDT LONG" in dt and status_trade_RSRUSDT == -1 and curr_num <= max_trade:
+            if "RSRUSDT LONG" in dt and (status_trade_RSRUSDT == -1 or status_trade_RSRUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RSRUSDT:
@@ -5099,7 +5099,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_RSRUSDT = 0
                     curr_num = curr_num - 1
 
-            if "RSRUSDT SHORT" in dt and status_trade_RSRUSDT == 1 and curr_num <= max_trade:
+            if "RSRUSDT SHORT" in dt and (status_trade_RSRUSDT == -1 or status_trade_RSRUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RSRUSDT:
@@ -5134,7 +5134,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_OCEANUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("OCEANUSDT end of short trade" in dt) and (status_trade_OCEANUSDT == -1) and curr_num > 0:
+            if ("OCEANUSDT end of short trade" in dt) and (status_trade_OCEANUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_OCEANUSDT:
@@ -5143,7 +5143,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "OCEANUSDT LONG" in dt and status_trade_OCEANUSDT == -1 and curr_num <= max_trade:
+            if "OCEANUSDT LONG" in dt and (status_trade_OCEANUSDT == -1 or status_trade_OCEANUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_OCEANUSDT:
@@ -5151,7 +5151,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_OCEANUSDT = 0
                     curr_num = curr_num - 1
 
-            if "OCEANUSDT SHORT" in dt and status_trade_OCEANUSDT == 1 and curr_num <= max_trade:
+            if "OCEANUSDT SHORT" in dt and (status_trade_OCEANUSDT == -1 or status_trade_OCEANUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_OCEANUSDT:
@@ -5186,7 +5186,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CVCUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("CVCUSDT end of short trade" in dt) and (status_trade_CVCUSDT == -1) and curr_num > 0:
+            if ("CVCUSDT end of short trade" in dt) and (status_trade_CVCUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CVCUSDT:
@@ -5195,7 +5195,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "CVCUSDT LONG" in dt and status_trade_CVCUSDT == -1 and curr_num <= max_trade:
+            if "CVCUSDT LONG" in dt and (status_trade_CVCUSDT == -1 or status_trade_CVCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CVCUSDT:
@@ -5203,7 +5203,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CVCUSDT = 0
                     curr_num = curr_num - 1
 
-            if "CVCUSDT SHORT" in dt and status_trade_CVCUSDT == 1 and curr_num <= max_trade:
+            if "CVCUSDT SHORT" in dt and (status_trade_CVCUSDT == -1 or status_trade_CVCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CVCUSDT:
@@ -5238,7 +5238,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_AXSUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("AXSUSDT end of short trade" in dt) and (status_trade_AXSUSDT == -1) and curr_num > 0:
+            if ("AXSUSDT end of short trade" in dt) and (status_trade_AXSUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_AXSUSDT:
@@ -5247,7 +5247,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "AXSUSDT LONG" in dt and status_trade_AXSUSDT == -1 and curr_num <= max_trade:
+            if "AXSUSDT LONG" in dt and (status_trade_AXSUSDT == -1 or status_trade_AXSUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_AXSUSDT:
@@ -5255,7 +5255,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_AXSUSDT = 0
                     curr_num = curr_num - 1
 
-            if "AXSUSDT SHORT" in dt and status_trade_AXSUSDT == 1 and curr_num <= max_trade:
+            if "AXSUSDT SHORT" in dt and (status_trade_AXSUSDT == -1 or status_trade_AXSUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_AXSUSDT:
@@ -5290,7 +5290,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ALPHAUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ALPHAUSDT end of short trade" in dt) and (status_trade_ALPHAUSDT == -1) and curr_num > 0:
+            if ("ALPHAUSDT end of short trade" in dt) and (status_trade_ALPHAUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ALPHAUSDT:
@@ -5299,7 +5299,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ALPHAUSDT LONG" in dt and status_trade_ALPHAUSDT == -1 and curr_num <= max_trade:
+            if "ALPHAUSDT LONG" in dt and (status_trade_ALPHAUSDT == -1 or status_trade_ALPHAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ALPHAUSDT:
@@ -5307,7 +5307,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ALPHAUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ALPHAUSDT SHORT" in dt and status_trade_ALPHAUSDT == 1 and curr_num <= max_trade:
+            if "ALPHAUSDT SHORT" in dt and (status_trade_ALPHAUSDT == -1 or status_trade_ALPHAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ALPHAUSDT:
@@ -5342,7 +5342,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SKLUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("SKLUSDT end of short trade" in dt) and (status_trade_SKLUSDT == -1) and curr_num > 0:
+            if ("SKLUSDT end of short trade" in dt) and (status_trade_SKLUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SKLUSDT:
@@ -5351,7 +5351,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "SKLUSDT LONG" in dt and status_trade_SKLUSDT == -1 and curr_num <= max_trade:
+            if "SKLUSDT LONG" in dt and (status_trade_SKLUSDT == -1 or status_trade_SKLUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SKLUSDT:
@@ -5359,7 +5359,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SKLUSDT = 0
                     curr_num = curr_num - 1
 
-            if "SKLUSDT SHORT" in dt and status_trade_SKLUSDT == 1 and curr_num <= max_trade:
+            if "SKLUSDT SHORT" in dt and (status_trade_SKLUSDT == -1 or status_trade_SKLUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SKLUSDT:
@@ -5394,7 +5394,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_GRTUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("GRTUSDT end of short trade" in dt) and (status_trade_GRTUSDT == -1) and curr_num > 0:
+            if ("GRTUSDT end of short trade" in dt) and (status_trade_GRTUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GRTUSDT:
@@ -5403,7 +5403,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "GRTUSDT LONG" in dt and status_trade_GRTUSDT == -1 and curr_num <= max_trade:
+            if "GRTUSDT LONG" in dt and (status_trade_GRTUSDT == -1 or status_trade_GRTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GRTUSDT:
@@ -5411,7 +5411,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_GRTUSDT = 0
                     curr_num = curr_num - 1
 
-            if "GRTUSDT SHORT" in dt and status_trade_GRTUSDT == 1 and curr_num <= max_trade:
+            if "GRTUSDT SHORT" in dt and (status_trade_GRTUSDT == -1 or status_trade_GRTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GRTUSDT:
@@ -5446,7 +5446,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CHZUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("CHZUSDT end of short trade" in dt) and (status_trade_CHZUSDT == -1) and curr_num > 0:
+            if ("CHZUSDT end of short trade" in dt) and (status_trade_CHZUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CHZUSDT:
@@ -5455,7 +5455,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "CHZUSDT LONG" in dt and status_trade_CHZUSDT == -1 and curr_num <= max_trade:
+            if "CHZUSDT LONG" in dt and (status_trade_CHZUSDT == -1 or status_trade_CHZUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CHZUSDT:
@@ -5463,7 +5463,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CHZUSDT = 0
                     curr_num = curr_num - 1
 
-            if "CHZUSDT SHORT" in dt and status_trade_CHZUSDT == 1 and curr_num <= max_trade:
+            if "CHZUSDT SHORT" in dt and (status_trade_CHZUSDT == -1 or status_trade_CHZUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CHZUSDT:
@@ -5498,7 +5498,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_LITUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("LITUSDT end of short trade" in dt) and (status_trade_LITUSDT == -1) and curr_num > 0:
+            if ("LITUSDT end of short trade" in dt) and (status_trade_LITUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LITUSDT:
@@ -5507,7 +5507,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "LITUSDT LONG" in dt and status_trade_LITUSDT == -1 and curr_num <= max_trade:
+            if "LITUSDT LONG" in dt and (status_trade_LITUSDT == -1 or status_trade_LITUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LITUSDT:
@@ -5515,7 +5515,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_LITUSDT = 0
                     curr_num = curr_num - 1
 
-            if "LITUSDT SHORT" in dt and status_trade_LITUSDT == 1 and curr_num <= max_trade:
+            if "LITUSDT SHORT" in dt and (status_trade_LITUSDT == -1 or status_trade_LITUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LITUSDT:
@@ -5550,7 +5550,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_REEFUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("REEFUSDT end of short trade" in dt) and (status_trade_REEFUSDT == -1) and curr_num > 0:
+            if ("REEFUSDT end of short trade" in dt) and (status_trade_REEFUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_REEFUSDT:
@@ -5559,7 +5559,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "REEFUSDT LONG" in dt and status_trade_REEFUSDT == -1 and curr_num <= max_trade:
+            if "REEFUSDT LONG" in dt and (status_trade_REEFUSDT == -1 or status_trade_REEFUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_REEFUSDT:
@@ -5567,7 +5567,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_REEFUSDT = 0
                     curr_num = curr_num - 1
 
-            if "REEFUSDT SHORT" in dt and status_trade_REEFUSDT == 1 and curr_num <= max_trade:
+            if "REEFUSDT SHORT" in dt and (status_trade_REEFUSDT == -1 or status_trade_REEFUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_REEFUSDT:
@@ -5602,7 +5602,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ARPAUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ARPAUSDT end of short trade" in dt) and (status_trade_ARPAUSDT == -1) and curr_num > 0:
+            if ("ARPAUSDT end of short trade" in dt) and (status_trade_ARPAUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ARPAUSDT:
@@ -5611,7 +5611,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ARPAUSDT LONG" in dt and status_trade_ARPAUSDT == -1 and curr_num <= max_trade:
+            if "ARPAUSDT LONG" in dt and (status_trade_ARPAUSDT == -1 or status_trade_ARPAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ARPAUSDT:
@@ -5619,7 +5619,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ARPAUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ARPAUSDT SHORT" in dt and status_trade_ARPAUSDT == 1 and curr_num <= max_trade:
+            if "ARPAUSDT SHORT" in dt and (status_trade_ARPAUSDT == -1 or status_trade_ARPAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ARPAUSDT:
@@ -5654,7 +5654,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CELOUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("CELOUSDT end of short trade" in dt) and (status_trade_CELOUSDT == -1) and curr_num > 0:
+            if ("CELOUSDT end of short trade" in dt) and (status_trade_CELOUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CELOUSDT:
@@ -5663,7 +5663,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "CELOUSDT LONG" in dt and status_trade_CELOUSDT == -1 and curr_num <= max_trade:
+            if "CELOUSDT LONG" in dt and (status_trade_CELOUSDT == -1 or status_trade_CELOUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CELOUSDT:
@@ -5671,7 +5671,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CELOUSDT = 0
                     curr_num = curr_num - 1
 
-            if "CELOUSDT SHORT" in dt and status_trade_CELOUSDT == 1 and curr_num <= max_trade:
+            if "CELOUSDT SHORT" in dt and (status_trade_CELOUSDT == -1 or status_trade_CELOUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CELOUSDT:
@@ -5706,7 +5706,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CELRUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("CELRUSDT end of short trade" in dt) and (status_trade_CELRUSDT == -1) and curr_num > 0:
+            if ("CELRUSDT end of short trade" in dt) and (status_trade_CELRUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CELRUSDT:
@@ -5715,7 +5715,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "CELRUSDT LONG" in dt and status_trade_CELRUSDT == -1 and curr_num <= max_trade:
+            if "CELRUSDT LONG" in dt and (status_trade_CELRUSDT == -1 or status_trade_CELRUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CELRUSDT:
@@ -5723,7 +5723,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CELRUSDT = 0
                     curr_num = curr_num - 1
 
-            if "CELRUSDT SHORT" in dt and status_trade_CELRUSDT == 1 and curr_num <= max_trade:
+            if "CELRUSDT SHORT" in dt and (status_trade_CELRUSDT == -1 or status_trade_CELRUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CELRUSDT:
@@ -5758,7 +5758,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_GALAUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("GALAUSDT end of short trade" in dt) and (status_trade_GALAUSDT == -1) and curr_num > 0:
+            if ("GALAUSDT end of short trade" in dt) and (status_trade_GALAUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GALAUSDT:
@@ -5767,7 +5767,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "GALAUSDT LONG" in dt and status_trade_GALAUSDT == -1 and curr_num <= max_trade:
+            if "GALAUSDT LONG" in dt and (status_trade_GALAUSDT == -1 or status_trade_GALAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GALAUSDT:
@@ -5775,7 +5775,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_GALAUSDT = 0
                     curr_num = curr_num - 1
 
-            if "GALAUSDT SHORT" in dt and status_trade_GALAUSDT == 1 and curr_num <= max_trade:
+            if "GALAUSDT SHORT" in dt and (status_trade_GALAUSDT == -1 or status_trade_GALAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GALAUSDT:
@@ -5810,7 +5810,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_RAYUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("RAYUSDT end of short trade" in dt) and (status_trade_RAYUSDT == -1) and curr_num > 0:
+            if ("RAYUSDT end of short trade" in dt) and (status_trade_RAYUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RAYUSDT:
@@ -5819,7 +5819,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "RAYUSDT LONG" in dt and status_trade_RAYUSDT == -1 and curr_num <= max_trade:
+            if "RAYUSDT LONG" in dt and (status_trade_RAYUSDT == -1 or status_trade_RAYUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RAYUSDT:
@@ -5827,7 +5827,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_RAYUSDT = 0
                     curr_num = curr_num - 1
 
-            if "RAYUSDT SHORT" in dt and status_trade_RAYUSDT == 1 and curr_num <= max_trade:
+            if "RAYUSDT SHORT" in dt and (status_trade_RAYUSDT == -1 or status_trade_RAYUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RAYUSDT:
@@ -5862,7 +5862,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_TLMUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("TLMUSDT end of short trade" in dt) and (status_trade_TLMUSDT == -1) and curr_num > 0:
+            if ("TLMUSDT end of short trade" in dt) and (status_trade_TLMUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_TLMUSDT:
@@ -5871,7 +5871,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "TLMUSDT LONG" in dt and status_trade_TLMUSDT == -1 and curr_num <= max_trade:
+            if "TLMUSDT LONG" in dt and (status_trade_TLMUSDT == -1 or status_trade_TLMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_TLMUSDT:
@@ -5879,7 +5879,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_TLMUSDT = 0
                     curr_num = curr_num - 1
 
-            if "TLMUSDT SHORT" in dt and status_trade_TLMUSDT == 1 and curr_num <= max_trade:
+            if "TLMUSDT SHORT" in dt and (status_trade_TLMUSDT == -1 or status_trade_TLMUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_TLMUSDT:
@@ -5914,7 +5914,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BTCUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("BTCUSDT end of short trade" in dt) and (status_trade_BTCUSDT == -1) and curr_num > 0:
+            if ("BTCUSDT end of short trade" in dt) and (status_trade_BTCUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BTCUSDT:
@@ -5923,7 +5923,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "BTCUSDT LONG" in dt and status_trade_BTCUSDT == -1 and curr_num <= max_trade:
+            if "BTCUSDT LONG" in dt and (status_trade_BTCUSDT == -1 or status_trade_BTCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BTCUSDT:
@@ -5931,7 +5931,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BTCUSDT = 0
                     curr_num = curr_num - 1
 
-            if "BTCUSDT SHORT" in dt and status_trade_BTCUSDT == 1 and curr_num <= max_trade:
+            if "BTCUSDT SHORT" in dt and (status_trade_BTCUSDT == -1 or status_trade_BTCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BTCUSDT:
@@ -5966,7 +5966,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SANDUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("SANDUSDT end of short trade" in dt) and (status_trade_SANDUSDT == -1) and curr_num > 0:
+            if ("SANDUSDT end of short trade" in dt) and (status_trade_SANDUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SANDUSDT:
@@ -5975,7 +5975,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "SANDUSDT LONG" in dt and status_trade_SANDUSDT == -1 and curr_num <= max_trade:
+            if "SANDUSDT LONG" in dt and (status_trade_SANDUSDT == -1 or status_trade_SANDUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SANDUSDT:
@@ -5983,7 +5983,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SANDUSDT = 0
                     curr_num = curr_num - 1
 
-            if "SANDUSDT SHORT" in dt and status_trade_SANDUSDT == 1 and curr_num <= max_trade:
+            if "SANDUSDT SHORT" in dt and (status_trade_SANDUSDT == -1 or status_trade_SANDUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SANDUSDT:
@@ -6018,7 +6018,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_GTCUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("GTCUSDT end of short trade" in dt) and (status_trade_GTCUSDT == -1) and curr_num > 0:
+            if ("GTCUSDT end of short trade" in dt) and (status_trade_GTCUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GTCUSDT:
@@ -6027,7 +6027,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "GTCUSDT LONG" in dt and status_trade_GTCUSDT == -1 and curr_num <= max_trade:
+            if "GTCUSDT LONG" in dt and (status_trade_GTCUSDT == -1 or status_trade_GTCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GTCUSDT:
@@ -6035,7 +6035,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_GTCUSDT = 0
                     curr_num = curr_num - 1
 
-            if "GTCUSDT SHORT" in dt and status_trade_GTCUSDT == 1 and curr_num <= max_trade:
+            if "GTCUSDT SHORT" in dt and (status_trade_GTCUSDT == -1 or status_trade_GTCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GTCUSDT:
@@ -6070,7 +6070,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_STMXUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("STMXUSDT end of short trade" in dt) and (status_trade_STMXUSDT == -1) and curr_num > 0:
+            if ("STMXUSDT end of short trade" in dt) and (status_trade_STMXUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_STMXUSDT:
@@ -6079,7 +6079,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "STMXUSDT LONG" in dt and status_trade_STMXUSDT == -1 and curr_num <= max_trade:
+            if "STMXUSDT LONG" in dt and (status_trade_STMXUSDT == -1 or status_trade_STMXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_STMXUSDT:
@@ -6087,7 +6087,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_STMXUSDT = 0
                     curr_num = curr_num - 1
 
-            if "STMXUSDT SHORT" in dt and status_trade_STMXUSDT == 1 and curr_num <= max_trade:
+            if "STMXUSDT SHORT" in dt and (status_trade_STMXUSDT == -1 or status_trade_STMXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_STMXUSDT:
@@ -6122,7 +6122,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ZENUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ZENUSDT end of short trade" in dt) and (status_trade_ZENUSDT == -1) and curr_num > 0:
+            if ("ZENUSDT end of short trade" in dt) and (status_trade_ZENUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ZENUSDT:
@@ -6131,7 +6131,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ZENUSDT LONG" in dt and status_trade_ZENUSDT == -1 and curr_num <= max_trade:
+            if "ZENUSDT LONG" in dt and (status_trade_ZENUSDT == -1 or status_trade_ZENUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ZENUSDT:
@@ -6139,7 +6139,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ZENUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ZENUSDT SHORT" in dt and status_trade_ZENUSDT == 1 and curr_num <= max_trade:
+            if "ZENUSDT SHORT" in dt and (status_trade_ZENUSDT == -1 or status_trade_ZENUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ZENUSDT:
@@ -6174,7 +6174,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_HBARUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("HBARUSDT end of short trade" in dt) and (status_trade_HBARUSDT == -1) and curr_num > 0:
+            if ("HBARUSDT end of short trade" in dt) and (status_trade_HBARUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_HBARUSDT:
@@ -6183,7 +6183,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "HBARUSDT LONG" in dt and status_trade_HBARUSDT == -1 and curr_num <= max_trade:
+            if "HBARUSDT LONG" in dt and (status_trade_HBARUSDT == -1 or status_trade_HBARUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_HBARUSDT:
@@ -6191,7 +6191,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_HBARUSDT = 0
                     curr_num = curr_num - 1
 
-            if "HBARUSDT SHORT" in dt and status_trade_HBARUSDT == 1 and curr_num <= max_trade:
+            if "HBARUSDT SHORT" in dt and (status_trade_HBARUSDT == -1 or status_trade_HBARUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_HBARUSDT:
@@ -6226,7 +6226,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_MANAUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("MANAUSDT end of short trade" in dt) and (status_trade_MANAUSDT == -1) and curr_num > 0:
+            if ("MANAUSDT end of short trade" in dt) and (status_trade_MANAUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MANAUSDT:
@@ -6235,7 +6235,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "MANAUSDT LONG" in dt and status_trade_MANAUSDT == -1 and curr_num <= max_trade:
+            if "MANAUSDT LONG" in dt and (status_trade_MANAUSDT == -1 or status_trade_MANAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MANAUSDT:
@@ -6243,7 +6243,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_MANAUSDT = 0
                     curr_num = curr_num - 1
 
-            if "MANAUSDT SHORT" in dt and status_trade_MANAUSDT == 1 and curr_num <= max_trade:
+            if "MANAUSDT SHORT" in dt and (status_trade_MANAUSDT == -1 or status_trade_MANAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_MANAUSDT:
@@ -6278,7 +6278,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_LINAUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("LINAUSDT end of short trade" in dt) and (status_trade_LINAUSDT == -1) and curr_num > 0:
+            if ("LINAUSDT end of short trade" in dt) and (status_trade_LINAUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LINAUSDT:
@@ -6287,7 +6287,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "LINAUSDT LONG" in dt and status_trade_LINAUSDT == -1 and curr_num <= max_trade:
+            if "LINAUSDT LONG" in dt and (status_trade_LINAUSDT == -1 or status_trade_LINAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LINAUSDT:
@@ -6295,7 +6295,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_LINAUSDT = 0
                     curr_num = curr_num - 1
 
-            if "LINAUSDT SHORT" in dt and status_trade_LINAUSDT == 1 and curr_num <= max_trade:
+            if "LINAUSDT SHORT" in dt and (status_trade_LINAUSDT == -1 or status_trade_LINAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LINAUSDT:
@@ -6330,7 +6330,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BAKEUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("BAKEUSDT end of short trade" in dt) and (status_trade_BAKEUSDT == -1) and curr_num > 0:
+            if ("BAKEUSDT end of short trade" in dt) and (status_trade_BAKEUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BAKEUSDT:
@@ -6339,7 +6339,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "BAKEUSDT LONG" in dt and status_trade_BAKEUSDT == -1 and curr_num <= max_trade:
+            if "BAKEUSDT LONG" in dt and (status_trade_BAKEUSDT == -1 or status_trade_BAKEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BAKEUSDT:
@@ -6347,7 +6347,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BAKEUSDT = 0
                     curr_num = curr_num - 1
 
-            if "BAKEUSDT SHORT" in dt and status_trade_BAKEUSDT == 1 and curr_num <= max_trade:
+            if "BAKEUSDT SHORT" in dt and (status_trade_BAKEUSDT == -1 or status_trade_BAKEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BAKEUSDT:
@@ -6382,7 +6382,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_NKNUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("NKNUSDT end of short trade" in dt) and (status_trade_NKNUSDT == -1) and curr_num > 0:
+            if ("NKNUSDT end of short trade" in dt) and (status_trade_NKNUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_NKNUSDT:
@@ -6391,7 +6391,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "NKNUSDT LONG" in dt and status_trade_NKNUSDT == -1 and curr_num <= max_trade:
+            if "NKNUSDT LONG" in dt and (status_trade_NKNUSDT == -1 or status_trade_NKNUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_NKNUSDT:
@@ -6399,7 +6399,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_NKNUSDT = 0
                     curr_num = curr_num - 1
 
-            if "NKNUSDT SHORT" in dt and status_trade_NKNUSDT == 1 and curr_num <= max_trade:
+            if "NKNUSDT SHORT" in dt and (status_trade_NKNUSDT == -1 or status_trade_NKNUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_NKNUSDT:
@@ -6434,7 +6434,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SCUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("SCUSDT end of short trade" in dt) and (status_trade_SCUSDT == -1) and curr_num > 0:
+            if ("SCUSDT end of short trade" in dt) and (status_trade_SCUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SCUSDT:
@@ -6443,7 +6443,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "SCUSDT LONG" in dt and status_trade_SCUSDT == -1 and curr_num <= max_trade:
+            if "SCUSDT LONG" in dt and (status_trade_SCUSDT == -1 or status_trade_SCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SCUSDT:
@@ -6451,7 +6451,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_SCUSDT = 0
                     curr_num = curr_num - 1
 
-            if "SCUSDT SHORT" in dt and status_trade_SCUSDT == 1 and curr_num <= max_trade:
+            if "SCUSDT SHORT" in dt and (status_trade_SCUSDT == -1 or status_trade_SCUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_SCUSDT:
@@ -6486,7 +6486,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DENTUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("DENTUSDT end of short trade" in dt) and (status_trade_DENTUSDT == -1) and curr_num > 0:
+            if ("DENTUSDT end of short trade" in dt) and (status_trade_DENTUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DENTUSDT:
@@ -6495,7 +6495,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "DENTUSDT LONG" in dt and status_trade_DENTUSDT == -1 and curr_num <= max_trade:
+            if "DENTUSDT LONG" in dt and (status_trade_DENTUSDT == -1 or status_trade_DENTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DENTUSDT:
@@ -6503,7 +6503,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DENTUSDT = 0
                     curr_num = curr_num - 1
 
-            if "DENTUSDT SHORT" in dt and status_trade_DENTUSDT == 1 and curr_num <= max_trade:
+            if "DENTUSDT SHORT" in dt and (status_trade_DENTUSDT == -1 or status_trade_DENTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DENTUSDT:
@@ -6538,7 +6538,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ANKRUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ANKRUSDT end of short trade" in dt) and (status_trade_ANKRUSDT == -1) and curr_num > 0:
+            if ("ANKRUSDT end of short trade" in dt) and (status_trade_ANKRUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ANKRUSDT:
@@ -6547,7 +6547,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ANKRUSDT LONG" in dt and status_trade_ANKRUSDT == -1 and curr_num <= max_trade:
+            if "ANKRUSDT LONG" in dt and (status_trade_ANKRUSDT == -1 or status_trade_ANKRUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ANKRUSDT:
@@ -6555,7 +6555,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ANKRUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ANKRUSDT SHORT" in dt and status_trade_ANKRUSDT == 1 and curr_num <= max_trade:
+            if "ANKRUSDT SHORT" in dt and (status_trade_ANKRUSDT == -1 or status_trade_ANKRUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ANKRUSDT:
@@ -6590,7 +6590,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_FLOWUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("FLOWUSDT end of short trade" in dt) and (status_trade_FLOWUSDT == -1) and curr_num > 0:
+            if ("FLOWUSDT end of short trade" in dt) and (status_trade_FLOWUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FLOWUSDT:
@@ -6599,7 +6599,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "FLOWUSDT LONG" in dt and status_trade_FLOWUSDT == -1 and curr_num <= max_trade:
+            if "FLOWUSDT LONG" in dt and (status_trade_FLOWUSDT == -1 or status_trade_FLOWUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FLOWUSDT:
@@ -6607,7 +6607,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_FLOWUSDT = 0
                     curr_num = curr_num - 1
 
-            if "FLOWUSDT SHORT" in dt and status_trade_FLOWUSDT == 1 and curr_num <= max_trade:
+            if "FLOWUSDT SHORT" in dt and (status_trade_FLOWUSDT == -1 or status_trade_FLOWUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FLOWUSDT:
@@ -6642,7 +6642,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_PEOPLEUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("PEOPLEUSDT end of short trade" in dt) and (status_trade_PEOPLEUSDT == -1) and curr_num > 0:
+            if ("PEOPLEUSDT end of short trade" in dt) and (status_trade_PEOPLEUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_PEOPLEUSDT:
@@ -6651,7 +6651,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "PEOPLEUSDT LONG" in dt and status_trade_PEOPLEUSDT == -1 and curr_num <= max_trade:
+            if "PEOPLEUSDT LONG" in dt and (status_trade_PEOPLEUSDT == -1 or status_trade_PEOPLEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_PEOPLEUSDT:
@@ -6659,7 +6659,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_PEOPLEUSDT = 0
                     curr_num = curr_num - 1
 
-            if "PEOPLEUSDT SHORT" in dt and status_trade_PEOPLEUSDT == 1 and curr_num <= max_trade:
+            if "PEOPLEUSDT SHORT" in dt and (status_trade_PEOPLEUSDT == -1 or status_trade_PEOPLEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_PEOPLEUSDT:
@@ -6694,7 +6694,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BELUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("BELUSDT end of short trade" in dt) and (status_trade_BELUSDT == -1) and curr_num > 0:
+            if ("BELUSDT end of short trade" in dt) and (status_trade_BELUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BELUSDT:
@@ -6703,7 +6703,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "BELUSDT LONG" in dt and status_trade_BELUSDT == -1 and curr_num <= max_trade:
+            if "BELUSDT LONG" in dt and (status_trade_BELUSDT == -1 or status_trade_BELUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BELUSDT:
@@ -6711,7 +6711,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BELUSDT = 0
                     curr_num = curr_num - 1
 
-            if "BELUSDT SHORT" in dt and status_trade_BELUSDT == 1 and curr_num <= max_trade:
+            if "BELUSDT SHORT" in dt and (status_trade_BELUSDT == -1 or status_trade_BELUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BELUSDT:
@@ -6746,7 +6746,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BNXUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("BNXUSDT end of short trade" in dt) and (status_trade_BNXUSDT == -1) and curr_num > 0:
+            if ("BNXUSDT end of short trade" in dt) and (status_trade_BNXUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BNXUSDT:
@@ -6755,7 +6755,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "BNXUSDT LONG" in dt and status_trade_BNXUSDT == -1 and curr_num <= max_trade:
+            if "BNXUSDT LONG" in dt and (status_trade_BNXUSDT == -1 or status_trade_BNXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BNXUSDT:
@@ -6763,7 +6763,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BNXUSDT = 0
                     curr_num = curr_num - 1
 
-            if "BNXUSDT SHORT" in dt and status_trade_BNXUSDT == 1 and curr_num <= max_trade:
+            if "BNXUSDT SHORT" in dt and (status_trade_BNXUSDT == -1 or status_trade_BNXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BNXUSDT:
@@ -6798,7 +6798,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BTCSTUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("BTCSTUSDT end of short trade" in dt) and (status_trade_BTCSTUSDT == -1) and curr_num > 0:
+            if ("BTCSTUSDT end of short trade" in dt) and (status_trade_BTCSTUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BTCSTUSDT:
@@ -6807,7 +6807,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "BTCSTUSDT LONG" in dt and status_trade_BTCSTUSDT == -1 and curr_num <= max_trade:
+            if "BTCSTUSDT LONG" in dt and (status_trade_BTCSTUSDT == -1 or status_trade_BTCSTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BTCSTUSDT:
@@ -6815,7 +6815,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_BTCSTUSDT = 0
                     curr_num = curr_num - 1
 
-            if "BTCSTUSDT SHORT" in dt and status_trade_BTCSTUSDT == 1 and curr_num <= max_trade:
+            if "BTCSTUSDT SHORT" in dt and (status_trade_BTCSTUSDT == -1 or status_trade_BTCSTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_BTCSTUSDT:
@@ -6850,7 +6850,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CHRUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("CHRUSDT end of short trade" in dt) and (status_trade_CHRUSDT == -1) and curr_num > 0:
+            if ("CHRUSDT end of short trade" in dt) and (status_trade_CHRUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CHRUSDT:
@@ -6859,7 +6859,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "CHRUSDT LONG" in dt and status_trade_CHRUSDT == -1 and curr_num <= max_trade:
+            if "CHRUSDT LONG" in dt and (status_trade_CHRUSDT == -1 or status_trade_CHRUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CHRUSDT:
@@ -6867,7 +6867,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CHRUSDT = 0
                     curr_num = curr_num - 1
 
-            if "CHRUSDT SHORT" in dt and status_trade_CHRUSDT == 1 and curr_num <= max_trade:
+            if "CHRUSDT SHORT" in dt and (status_trade_CHRUSDT == -1 or status_trade_CHRUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CHRUSDT:
@@ -6902,7 +6902,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CTKUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("CTKUSDT end of short trade" in dt) and (status_trade_CTKUSDT == -1) and curr_num > 0:
+            if ("CTKUSDT end of short trade" in dt) and (status_trade_CTKUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CTKUSDT:
@@ -6911,7 +6911,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "CTKUSDT LONG" in dt and status_trade_CTKUSDT == -1 and curr_num <= max_trade:
+            if "CTKUSDT LONG" in dt and (status_trade_CTKUSDT == -1 or status_trade_CTKUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CTKUSDT:
@@ -6919,7 +6919,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CTKUSDT = 0
                     curr_num = curr_num - 1
 
-            if "CTKUSDT SHORT" in dt and status_trade_CTKUSDT == 1 and curr_num <= max_trade:
+            if "CTKUSDT SHORT" in dt and (status_trade_CTKUSDT == -1 or status_trade_CTKUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CTKUSDT:
@@ -6954,7 +6954,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CTSIUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("CTSIUSDT end of short trade" in dt) and (status_trade_CTSIUSDT == -1) and curr_num > 0:
+            if ("CTSIUSDT end of short trade" in dt) and (status_trade_CTSIUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CTSIUSDT:
@@ -6963,7 +6963,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "CTSIUSDT LONG" in dt and status_trade_CTSIUSDT == -1 and curr_num <= max_trade:
+            if "CTSIUSDT LONG" in dt and (status_trade_CTSIUSDT == -1 or status_trade_CTSIUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CTSIUSDT:
@@ -6971,7 +6971,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_CTSIUSDT = 0
                     curr_num = curr_num - 1
 
-            if "CTSIUSDT SHORT" in dt and status_trade_CTSIUSDT == 1 and curr_num <= max_trade:
+            if "CTSIUSDT SHORT" in dt and (status_trade_CTSIUSDT == -1 or status_trade_CTSIUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_CTSIUSDT:
@@ -7006,7 +7006,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DARUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("DARUSDT end of short trade" in dt) and (status_trade_DARUSDT == -1) and curr_num > 0:
+            if ("DARUSDT end of short trade" in dt) and (status_trade_DARUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DARUSDT:
@@ -7015,7 +7015,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "DARUSDT LONG" in dt and status_trade_DARUSDT == -1 and curr_num <= max_trade:
+            if "DARUSDT LONG" in dt and (status_trade_DARUSDT == -1 or status_trade_DARUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DARUSDT:
@@ -7023,7 +7023,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DARUSDT = 0
                     curr_num = curr_num - 1
 
-            if "DARUSDT SHORT" in dt and status_trade_DARUSDT == 1 and curr_num <= max_trade:
+            if "DARUSDT SHORT" in dt and (status_trade_DARUSDT == -1 or status_trade_DARUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DARUSDT:
@@ -7058,7 +7058,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DGBUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("DGBUSDT end of short trade" in dt) and (status_trade_DGBUSDT == -1) and curr_num > 0:
+            if ("DGBUSDT end of short trade" in dt) and (status_trade_DGBUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DGBUSDT:
@@ -7067,7 +7067,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "DGBUSDT LONG" in dt and status_trade_DGBUSDT == -1 and curr_num <= max_trade:
+            if "DGBUSDT LONG" in dt and (status_trade_DGBUSDT == -1 or status_trade_DGBUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DGBUSDT:
@@ -7075,7 +7075,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DGBUSDT = 0
                     curr_num = curr_num - 1
 
-            if "DGBUSDT SHORT" in dt and status_trade_DGBUSDT == 1 and curr_num <= max_trade:
+            if "DGBUSDT SHORT" in dt and (status_trade_DGBUSDT == -1 or status_trade_DGBUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DGBUSDT:
@@ -7110,7 +7110,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DUSKUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("DUSKUSDT end of short trade" in dt) and (status_trade_DUSKUSDT == -1) and curr_num > 0:
+            if ("DUSKUSDT end of short trade" in dt) and (status_trade_DUSKUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DUSKUSDT:
@@ -7119,7 +7119,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "DUSKUSDT LONG" in dt and status_trade_DUSKUSDT == -1 and curr_num <= max_trade:
+            if "DUSKUSDT LONG" in dt and (status_trade_DUSKUSDT == -1 or status_trade_DUSKUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DUSKUSDT:
@@ -7127,7 +7127,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_DUSKUSDT = 0
                     curr_num = curr_num - 1
 
-            if "DUSKUSDT SHORT" in dt and status_trade_DUSKUSDT == 1 and curr_num <= max_trade:
+            if "DUSKUSDT SHORT" in dt and (status_trade_DUSKUSDT == -1 or status_trade_DUSKUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_DUSKUSDT:
@@ -7162,7 +7162,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ENJUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ENJUSDT end of short trade" in dt) and (status_trade_ENJUSDT == -1) and curr_num > 0:
+            if ("ENJUSDT end of short trade" in dt) and (status_trade_ENJUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ENJUSDT:
@@ -7171,7 +7171,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ENJUSDT LONG" in dt and status_trade_ENJUSDT == -1 and curr_num <= max_trade:
+            if "ENJUSDT LONG" in dt and (status_trade_ENJUSDT == -1 or status_trade_ENJUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ENJUSDT:
@@ -7179,7 +7179,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ENJUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ENJUSDT SHORT" in dt and status_trade_ENJUSDT == 1 and curr_num <= max_trade:
+            if "ENJUSDT SHORT" in dt and (status_trade_ENJUSDT == -1 or status_trade_ENJUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ENJUSDT:
@@ -7214,7 +7214,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ENSUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ENSUSDT end of short trade" in dt) and (status_trade_ENSUSDT == -1) and curr_num > 0:
+            if ("ENSUSDT end of short trade" in dt) and (status_trade_ENSUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ENSUSDT:
@@ -7223,7 +7223,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ENSUSDT LONG" in dt and status_trade_ENSUSDT == -1 and curr_num <= max_trade:
+            if "ENSUSDT LONG" in dt and (status_trade_ENSUSDT == -1 or status_trade_ENSUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ENSUSDT:
@@ -7231,7 +7231,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ENSUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ENSUSDT SHORT" in dt and status_trade_ENSUSDT == 1 and curr_num <= max_trade:
+            if "ENSUSDT SHORT" in dt and (status_trade_ENSUSDT == -1 or status_trade_ENSUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ENSUSDT:
@@ -7266,7 +7266,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_FTTUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("FTTUSDT end of short trade" in dt) and (status_trade_FTTUSDT == -1) and curr_num > 0:
+            if ("FTTUSDT end of short trade" in dt) and (status_trade_FTTUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FTTUSDT:
@@ -7275,7 +7275,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "FTTUSDT LONG" in dt and status_trade_FTTUSDT == -1 and curr_num <= max_trade:
+            if "FTTUSDT LONG" in dt and (status_trade_FTTUSDT == -1 or status_trade_FTTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FTTUSDT:
@@ -7283,7 +7283,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_FTTUSDT = 0
                     curr_num = curr_num - 1
 
-            if "FTTUSDT SHORT" in dt and status_trade_FTTUSDT == 1 and curr_num <= max_trade:
+            if "FTTUSDT SHORT" in dt and (status_trade_FTTUSDT == -1 or status_trade_FTTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_FTTUSDT:
@@ -7318,7 +7318,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_GALAUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("GALAUSDT end of short trade" in dt) and (status_trade_GALAUSDT == -1) and curr_num > 0:
+            if ("GALAUSDT end of short trade" in dt) and (status_trade_GALAUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GALAUSDT:
@@ -7327,7 +7327,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "GALAUSDT LONG" in dt and status_trade_GALAUSDT == -1 and curr_num <= max_trade:
+            if "GALAUSDT LONG" in dt and (status_trade_GALAUSDT == -1 or status_trade_GALAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GALAUSDT:
@@ -7335,7 +7335,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_GALAUSDT = 0
                     curr_num = curr_num - 1
 
-            if "GALAUSDT SHORT" in dt and status_trade_GALAUSDT == 1 and curr_num <= max_trade:
+            if "GALAUSDT SHORT" in dt and (status_trade_GALAUSDT == -1 or status_trade_GALAUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GALAUSDT:
@@ -7370,7 +7370,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_GMTUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("GMTUSDT end of short trade" in dt) and (status_trade_GMTUSDT == -1) and curr_num > 0:
+            if ("GMTUSDT end of short trade" in dt) and (status_trade_GMTUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GMTUSDT:
@@ -7379,7 +7379,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "GMTUSDT LONG" in dt and status_trade_GMTUSDT == -1 and curr_num <= max_trade:
+            if "GMTUSDT LONG" in dt and (status_trade_GMTUSDT == -1 or status_trade_GMTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GMTUSDT:
@@ -7387,7 +7387,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_GMTUSDT = 0
                     curr_num = curr_num - 1
 
-            if "GMTUSDT SHORT" in dt and status_trade_GMTUSDT == 1 and curr_num <= max_trade:
+            if "GMTUSDT SHORT" in dt and (status_trade_GMTUSDT == -1 or status_trade_GMTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_GMTUSDT:
@@ -7422,7 +7422,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_HOTUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("HOTUSDT end of short trade" in dt) and (status_trade_HOTUSDT == -1) and curr_num > 0:
+            if ("HOTUSDT end of short trade" in dt) and (status_trade_HOTUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_HOTUSDT:
@@ -7431,7 +7431,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "HOTUSDT LONG" in dt and status_trade_HOTUSDT == -1 and curr_num <= max_trade:
+            if "HOTUSDT LONG" in dt and (status_trade_HOTUSDT == -1 or status_trade_HOTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_HOTUSDT:
@@ -7439,7 +7439,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_HOTUSDT = 0
                     curr_num = curr_num - 1
 
-            if "HOTUSDT SHORT" in dt and status_trade_HOTUSDT == 1 and curr_num <= max_trade:
+            if "HOTUSDT SHORT" in dt and (status_trade_HOTUSDT == -1 or status_trade_HOTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_HOTUSDT:
@@ -7474,7 +7474,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_IMXUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("IMXUSDT end of short trade" in dt) and (status_trade_IMXUSDT == -1) and curr_num > 0:
+            if ("IMXUSDT end of short trade" in dt) and (status_trade_IMXUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_IMXUSDT:
@@ -7483,7 +7483,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "IMXUSDT LONG" in dt and status_trade_IMXUSDT == -1 and curr_num <= max_trade:
+            if "IMXUSDT LONG" in dt and (status_trade_IMXUSDT == -1 or status_trade_IMXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_IMXUSDT:
@@ -7491,7 +7491,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_IMXUSDT = 0
                     curr_num = curr_num - 1
 
-            if "IMXUSDT SHORT" in dt and status_trade_IMXUSDT == 1 and curr_num <= max_trade:
+            if "IMXUSDT SHORT" in dt and (status_trade_IMXUSDT == -1 or status_trade_IMXUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_IMXUSDT:
@@ -7526,7 +7526,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_JASMYUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("JASMYUSDT end of short trade" in dt) and (status_trade_JASMYUSDT == -1) and curr_num > 0:
+            if ("JASMYUSDT end of short trade" in dt) and (status_trade_JASMYUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_JASMYUSDT:
@@ -7535,7 +7535,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "JASMYUSDT LONG" in dt and status_trade_JASMYUSDT == -1 and curr_num <= max_trade:
+            if "JASMYUSDT LONG" in dt and (status_trade_JASMYUSDT == -1 or status_trade_JASMYUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_JASMYUSDT:
@@ -7543,7 +7543,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_JASMYUSDT = 0
                     curr_num = curr_num - 1
 
-            if "JASMYUSDT SHORT" in dt and status_trade_JASMYUSDT == 1 and curr_num <= max_trade:
+            if "JASMYUSDT SHORT" in dt and (status_trade_JASMYUSDT == -1 or status_trade_JASMYUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_JASMYUSDT:
@@ -7578,7 +7578,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_LPTUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("LPTUSDT end of short trade" in dt) and (status_trade_LPTUSDT == -1) and curr_num > 0:
+            if ("LPTUSDT end of short trade" in dt) and (status_trade_LPTUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LPTUSDT:
@@ -7587,7 +7587,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "LPTUSDT LONG" in dt and status_trade_LPTUSDT == -1 and curr_num <= max_trade:
+            if "LPTUSDT LONG" in dt and (status_trade_LPTUSDT == -1 or status_trade_LPTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LPTUSDT:
@@ -7595,7 +7595,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_LPTUSDT = 0
                     curr_num = curr_num - 1
 
-            if "LPTUSDT SHORT" in dt and status_trade_LPTUSDT == 1 and curr_num <= max_trade:
+            if "LPTUSDT SHORT" in dt and (status_trade_LPTUSDT == -1 or status_trade_LPTUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_LPTUSDT:
@@ -7630,7 +7630,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_OMGUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("OMGUSDT end of short trade" in dt) and (status_trade_OMGUSDT == -1) and curr_num > 0:
+            if ("OMGUSDT end of short trade" in dt) and (status_trade_OMGUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_OMGUSDT:
@@ -7639,7 +7639,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "OMGUSDT LONG" in dt and status_trade_OMGUSDT == -1 and curr_num <= max_trade:
+            if "OMGUSDT LONG" in dt and (status_trade_OMGUSDT == -1 or status_trade_OMGUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_OMGUSDT:
@@ -7647,7 +7647,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_OMGUSDT = 0
                     curr_num = curr_num - 1
 
-            if "OMGUSDT SHORT" in dt and status_trade_OMGUSDT == 1 and curr_num <= max_trade:
+            if "OMGUSDT SHORT" in dt and (status_trade_OMGUSDT == -1 or status_trade_OMGUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_OMGUSDT:
@@ -7682,7 +7682,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_OPUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("OPUSDT end of short trade" in dt) and (status_trade_OPUSDT == -1) and curr_num > 0:
+            if ("OPUSDT end of short trade" in dt) and (status_trade_OPUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_OPUSDT:
@@ -7691,7 +7691,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "OPUSDT LONG" in dt and status_trade_OPUSDT == -1 and curr_num <= max_trade:
+            if "OPUSDT LONG" in dt and (status_trade_OPUSDT == -1 or status_trade_OPUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_OPUSDT:
@@ -7699,7 +7699,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_OPUSDT = 0
                     curr_num = curr_num - 1
 
-            if "OPUSDT SHORT" in dt and status_trade_OPUSDT == 1 and curr_num <= max_trade:
+            if "OPUSDT SHORT" in dt and (status_trade_OPUSDT == -1 or status_trade_OPUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_OPUSDT:
@@ -7734,7 +7734,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_RENUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("RENUSDT end of short trade" in dt) and (status_trade_RENUSDT == -1) and curr_num > 0:
+            if ("RENUSDT end of short trade" in dt) and (status_trade_RENUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RENUSDT:
@@ -7743,7 +7743,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "RENUSDT LONG" in dt and status_trade_RENUSDT == -1 and curr_num <= max_trade:
+            if "RENUSDT LONG" in dt and (status_trade_RENUSDT == -1 or status_trade_RENUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RENUSDT:
@@ -7751,7 +7751,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_RENUSDT = 0
                     curr_num = curr_num - 1
 
-            if "RENUSDT SHORT" in dt and status_trade_RENUSDT == 1 and curr_num <= max_trade:
+            if "RENUSDT SHORT" in dt and (status_trade_RENUSDT == -1 or status_trade_RENUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_RENUSDT:
@@ -7786,7 +7786,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ROSEUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("ROSEUSDT end of short trade" in dt) and (status_trade_ROSEUSDT == -1) and curr_num > 0:
+            if ("ROSEUSDT end of short trade" in dt) and (status_trade_ROSEUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ROSEUSDT:
@@ -7795,7 +7795,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "ROSEUSDT LONG" in dt and status_trade_ROSEUSDT == -1 and curr_num <= max_trade:
+            if "ROSEUSDT LONG" in dt and (status_trade_ROSEUSDT == -1 or status_trade_ROSEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ROSEUSDT:
@@ -7803,7 +7803,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_ROSEUSDT = 0
                     curr_num = curr_num - 1
 
-            if "ROSEUSDT SHORT" in dt and status_trade_ROSEUSDT == 1 and curr_num <= max_trade:
+            if "ROSEUSDT SHORT" in dt and (status_trade_ROSEUSDT == -1 or status_trade_ROSEUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_ROSEUSDT:
@@ -7838,7 +7838,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_WOOUSDT = 0
                     curr_num = curr_num - 1
 
-            if ("WOOUSDT end of short trade" in dt) and (status_trade_WOOUSDT == -1) and curr_num > 0:
+            if ("WOOUSDT end of short trade" in dt) and (status_trade_WOOUSDT == 1) and curr_num > 0:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_WOOUSDT:
@@ -7847,7 +7847,7 @@ class S(BaseHTTPRequestHandler):
                     curr_num = curr_num - 1
 
 
-            if "WOOUSDT LONG" in dt and status_trade_WOOUSDT == -1 and curr_num <= max_trade:
+            if "WOOUSDT LONG" in dt and (status_trade_WOOUSDT == -1 or status_trade_WOOUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_WOOUSDT:
@@ -7855,7 +7855,7 @@ class S(BaseHTTPRequestHandler):
                     status_trade_WOOUSDT = 0
                     curr_num = curr_num - 1
 
-            if "WOOUSDT SHORT" in dt and status_trade_WOOUSDT == 1 and curr_num <= max_trade:
+            if "WOOUSDT SHORT" in dt and (status_trade_WOOUSDT == -1 or status_trade_WOOUSDT == 1) and curr_num <= max_trade:
                 bar = dt.split("Bar_Index: ")
                 bar = int(bar[1])
                 if bar != last_bar_WOOUSDT:
